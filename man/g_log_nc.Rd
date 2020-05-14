@@ -4,7 +4,7 @@
 \alias{g_log_nc}
 \title{New cases vs total cases in logarithms of COVID19}
 \usage{
-g_log_nc(savepng = FALSE)
+g_log_nc()
 }
 \arguments{
 \item{savepng}{Logical. Should save a png version of the plot? Default FALSE.}

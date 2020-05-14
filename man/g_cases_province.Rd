@@ -2,6 +2,7 @@
 % Please edit documentation in R/g_cases_province.R
 \name{g_cases_province}
 \alias{g_cases_province}
+\alias{g_case_province}
 \title{Provinces with most positive cases of COVID19}
 \usage{
 g_case_province()
@@ -16,6 +17,10 @@ copy in png and gif format to the computer at the address defined in \code{setwd
 \description{
 This function creategraphs the provinces with the most positive cases of COVID19 in the DR.
 }
+\section{}{
+NA
+}
+
 \examples{
 g_case_provinces()
 g_case_provinces(savepng = TRUE)

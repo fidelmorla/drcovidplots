@@ -7,7 +7,7 @@
 load_data_covid_dr()
 }
 \value{
-5 objects class \code{tibble()} containing the information to use in the graphs functions.
+5 objects class \code{data.frame()} containing the information to use in the graphs functions.
 Also attached the formats or themes of the graphics to .GlobalEnv.
 }
 \description{
