@@ -1,0 +1,36 @@
+Package: drcovidplots
+Type: Package
+Title: Polts for COVID19 data from Dominican Republic 
+Version: 0.1.2
+Authors@R: c(person(given = "Fidel", family = "Morla, MA", role = c("aut", "cre"),
+                     email = "fidel.morla@gmail.com"))
+Description: This packages generates several plots using COVID-19 data from the Minister of Public Health and Social Assintance from Dominican Republic for COVID19.
+License: Unlimited
+Encoding: UTF-8
+LazyData: true
+URL: https://github.com/fidelmorla/drcovidplots
+RoxygenNote: 7.1.0
+Imports:
+    googlesheets4,
+    ggplot2,
+    dplyr,
+    tidyr,
+    purrr,
+    stringr, 
+    magrittr,
+    gganimate,
+    readxl,
+    lubridate,
+    XML,
+    rvest,
+    xml2,
+    grDevices,
+    ggalt,
+    ggthemes,
+    gridExtra,
+    grid,    
+    forcats,
+    gifski,
+    colorspace,
+    ggrepel,
+    lemon
