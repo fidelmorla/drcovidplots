@@ -55,7 +55,7 @@ g_rec_growth <-
   ggplot(aes(x = date, y = Rec_growth)) +
   geom_pointline(aes(fill = "blue", col = "blue")) +
   scale_x_date(date_labels = "%d %b",
-               date_breaks = "2 days") +
+               date_breaks = "3 days") +
   scale_y_continuous(breaks = c(seq(0,max_rec_growth, max_rec_growth / 5)),
                      limits = c(0,max_rec_growth)) +
   geom_text(data = tail(x = df_rec_growth, n = 1),

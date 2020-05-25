@@ -73,7 +73,9 @@ load_data_covid_dr <- function(){
             'ROM',
             'SPM',
             'MPLATA',
-            'HMAYOR')
+            'HMAYOR'),
+
+  NE = c('NOESP')
 )
 
   rep_actual <-
@@ -92,7 +94,8 @@ load_data_covid_dr <- function(){
                   'Metropolitan',
                   'North',
                   'South',
-                  'East')
+                  'East',
+                  'NE')
 
   for (i in 1:length(data_items)) {
 
@@ -104,6 +107,4 @@ load_data_covid_dr <- function(){
 
 
 }
-
-
 

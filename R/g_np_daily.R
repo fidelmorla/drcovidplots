@@ -63,9 +63,9 @@ max_daily_total_tests <-
 lab_np_daily <-
   labs(title = "RD: Positive and negative cases COVID-19",
        subtitle  =  paste0("Daily average of negative test = ",
-                           mean_neg,
+                           comma(mean_neg),
                            " / Daily average of positive test = ",
-                           mean_pos,
+                           comma(mean_pos),
                            " "),
        caption  = "Source: @fidelmorla with special bulletins of @SaludPublicaRD",
        x = "",
@@ -79,17 +79,17 @@ g_np_daily <-
              y = N,
              color = Cases,
              fill = Cases,
-             label = N)) +
+             label = comma(N))) +
   geom_bar(position = "stack",
            stat="identity",
-           width = 0.75,
+           width = 1,
            color = NA) +
   scale_fill_manual(values = c("#d1d1d1", '#850000')) +
   scale_color_manual(values = c("#850000", 'white')) +
   geom_text(data = df_np_daily %>% filter(date == max(date)),
             angle = 90,
             check_overlap = TRUE,
-            size = 4,
+            size = 3,
             show.legend = FALSE,
             position = position_stack(vjust = 0.5)) +
   scale_x_date(date_labels = "%d %b",

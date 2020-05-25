@@ -41,7 +41,8 @@ la <- c('Chile', 'Bolivia', 'Cuba',
         'Colombia', 'Peru', 'Honduras')
 
 headers_w <-
-  c('country',
+  c('n',
+    'country',
     'cases',
     'n_cases',
     'deaths',
@@ -53,6 +54,7 @@ headers_w <-
     'deaths_1m',
     'test',
     'test_1m',
+    'population',
     'continent')
 
 url_w <- "https://www.worldometers.info/coronavirus/#countries"
@@ -62,21 +64,35 @@ html_w <-
   xml2::read_html() %>%
   html_nodes("table")
 
-df_w <- html_table(html_w[[1]]) %>%
+df_w <-
+  html_table(html_w[[1]]) %>%
   set_names(nm = headers_w) %>%
   filter(country != 'Total:',
          country != '') %>%
-  mutate_at(.vars = headers_w,
-            .funs = funs(str_replace_all(string = .,
+    mutate_at(.vars = headers_w,
+            .funs = ~ str_replace_all(string = .,
                                          pattern = ",",
-                                         replacement = ""))) %>%
-  mutate_at(.vars = vars(headers_w[2:12]),
+                                         replacement = "")) %>%
+    select(-n) %>%
+  mutate_at(.vars = vars('cases',
+                         'n_cases',
+                         'deaths',
+                         'n_deaths',
+                         'recovered',
+                         'act_cases',
+                         'serious',
+                         'cases_1m',
+                         'deaths_1m',
+                         'test',
+                         'test_1m',
+                         'population'),
             .funs = as.numeric) %>%
   select(continent, country, everything()) %>%
-  mutate(Pos_1m = 100 * cases_1m / test_1m,
+    rename(Pop = population) %>%
+    drop_na(continent) %>%
+    mutate(Pos_1m = 100 * cases_1m / test_1m,
          Pos = 100 * cases / test,
          CFR = 100 * deaths / cases,
-         Pop = cases * 1000000 / cases_1m,
          Pos_p = 100 * Pos / Pop,
          world = ifelse(country %in% world, country, NA),
          col_world = ifelse(country %in% world, country, 'grey'),

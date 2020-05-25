@@ -7,6 +7,7 @@
 #' @return Graph of positive cases of COVID19 by region and save a
 #' copy in png format to the computer at the address defined in \code{setwd()}.
 #' @export
+#' @importFrom scales comma
 #' @examples
 #' g_region()
 #' @name g_region
@@ -32,7 +33,8 @@ df_reg <-
   mutate(Reg = case_when(Province %in% Metropolitan ~ 'Metropolitan',
                          Province %in% North ~ 'North',
                          Province %in% South ~ 'South',
-                         Province %in% East ~ 'East'))
+                         Province %in% East ~ 'East',
+                         Province %in% NE ~ 'NOESP'))
 
 rep_actual <-
   data_cum$Reports %>% max(na.rm = TRUE)
@@ -57,7 +59,7 @@ total_positives <-
 
 lab_reg <-
   labs(title = "DR: COVID19 cases by region",
-       subtitle = paste("Total =", total_positives),
+       subtitle = paste("Total =", comma(total_positives)),
        caption  = paste0("Source: @fidelmorla with information from special bulletin #",
                          rep_actual,
                          " of @SaludPublicaRD"),
@@ -69,7 +71,8 @@ lab_reg <-
 col_reg <- c('#bf0000', #azul
              '#d93316', #naranja,
              '#d96a16', #verde
-             '#e3981e') #morado
+             '#e3981e', #morado
+             'darkgrey')
 
 g_reg <-
   df_reg %>%
@@ -83,13 +86,14 @@ g_reg <-
              fill = reorder(Reg, -Cases),
              col = reorder(Reg, -Cases))) +
   geom_col() +
-  scale_y_continuous(breaks = c(seq(0,max_reg, max_reg / 4)),
+  scale_y_continuous(labels = comma,
+                     breaks = c(seq(0,max_reg, max_reg / 4)),
                      limits = c(0,max_reg)) +
   geom_text(check_overlap = TRUE,
             size = 4.5,
             hjust = -0.25,
             show.legend = FALSE,
-            aes(label = paste0(round(Cases,0), " (", round(P,1), "%)"))) +
+            aes(label = paste0(comma(Cases), " (", round(P,1), "%)"))) +
   coord_flip() +
   scale_fill_manual(values = col_reg) +
   scale_color_manual(values = col_reg) +

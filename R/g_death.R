@@ -5,6 +5,7 @@
 #' @param savepng Logical. Should save a png version of the plot? Default FALSE.
 #' @return Graph of the total number of deaths and saves a
 #' copy in png format to the computer at the address defined in \code{setwd()}.
+#' @importFrom scales comma
 #' @export
 #' @examples
 #' g_death()
@@ -34,7 +35,8 @@ g_death <-
              Reg = case_when(Province %in% Metropolitan ~ 'Metropolitan',
                              Province %in% North ~ 'North',
                              Province %in% South ~ 'South',
-                             Province %in% East ~ 'East')) %>%
+                             Province %in% East ~ 'East',
+                             Province %in% NE ~ 'NOESP')) %>%
       drop_na()
 
     max_dths <-
@@ -86,7 +88,8 @@ rep_actual <- data_cum$Reports %>% max(na.rm = TRUE)
                  fill = reorder(Province, -rank, order = TRUE),
                  col = reorder(Province, -rank, order = TRUE))) +
       geom_col() +
-      scale_y_continuous(breaks = c(seq(0,
+      scale_y_continuous(labels = scales::comma,
+                         breaks = c(seq(0,
                                         max_dths,
                                         max_dths / 5)),
                          limits = c(0,

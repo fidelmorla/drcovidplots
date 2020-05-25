@@ -3,7 +3,7 @@
 #' @description This function graphs the incidence of COVID19 in DR.
 #' @usage g_incidence()
 #' @param savepng Logical. Should save a png version of the plot? Default FALSE.
-
+#' @importFrom scales comma
 #' @return Incidence chart and save a
 #' copy in png format to the computer at the address defined in \code{setwd()}.
 #' @export
@@ -40,11 +40,12 @@ df_inc %<>%
          Reg = case_when(Province %in% Metropolitan ~ 'Metropolitan',
                          Province %in% North ~ 'North',
                          Province %in% South ~ 'South',
-                         Province %in% East ~ 'East')) %>%
+                         Province %in% East ~ 'East',
+                         Province %in% NE ~ 'NOESP')) %>%
   filter(Cases > 0)
 
 
-heatcol_inc <- sequential_hcl(n = 32,
+heatcol_inc <- sequential_hcl(n = 33,
                               palette = "YlOrRd",
                               power = 0.5,
                               l = 30,
@@ -92,7 +93,8 @@ g_inc <-
                  label = "100,000 * Positive / Population") +
   scale_color_manual(values = heatcol_inc) +
   scale_fill_manual(values = heatcol_inc) +
-  scale_y_continuous(breaks = c(seq(0,max_inc, max_inc/ 4)),
+  scale_y_continuous(labels = scales::comma,
+                     breaks = c(seq(0,max_inc, max_inc/ 4)),
                      limits = c(-5,max_inc)) +
   coord_flip() +
   lab_inc +

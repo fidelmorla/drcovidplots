@@ -6,7 +6,7 @@
 #' 3) Recovered and
 #' 4) Deaths.
 #' @param savepng Logical. Should save a png version of the plot? Default FALSE.
-
+#' @importFrom scales comma
 #' @usage g_status()
 #' @return Graph of the distribution according to the status of affected individuals and saves a
 #' copy in png format to the computer at the address defined in \code{setwd()}.
@@ -40,7 +40,7 @@ g_status <-
 
     lab_type <-
       labs(title = "DR: Distribution by status of affected individuals of COVID19",
-           subtitle = paste("Total =", sum(df_type$N)),
+           subtitle = paste("Total =", comma(sum(df_type$N))),
            caption  = paste0("Source: @fidelmorla with information from special bulletin #",
                              rep_actual,
                              " of @SaludPublicaRD"),
@@ -50,13 +50,13 @@ g_status <-
 
     max_type <- 100
 
-    col_type <- c('#035d91', #azul
-                  '#038024', #verde
+    col_type <- c('#038024', #verde
+                  '#035d91', #azul
                   '#c47e04', #naranja,
                   '#ad0219') #rojo
 
-    names(col_type) <- c('Home', #azul
-                         'Recovered', #verde
+    names(col_type) <- c('Recovered', #verde
+                         'Home', #azul
                          'Hospital', #naranja,
                          'Deaths') #rojo
 
@@ -68,12 +68,13 @@ g_status <-
                  col = reorder(Type, -N_p))) +
       geom_col() +
       scale_y_continuous(breaks = c(seq(0,max_type, max_type / 4)),
-                         limits = c(0,max_type)) +
+                         limits = c(0,max_type),
+                         labels = comma) +
       geom_text(check_overlap = TRUE,
                 size = 4.5,
                 hjust = -0.25,
                 show.legend = FALSE,
-                aes(label = paste0(round(N_p,1), " (", N, ")"))) +
+                aes(label = paste0(round(N_p,1), " (", comma(N), ")"))) +
       coord_flip() +
       scale_fill_manual(values = col_type) +
       scale_color_manual(values = col_type) +

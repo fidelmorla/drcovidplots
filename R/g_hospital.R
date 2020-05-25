@@ -6,6 +6,7 @@
 #' @return Chart of isolated individuals in hospitals and save a copy in png format on the computer
 #' at the address defined in \code{setwd()}.
 #' @export
+#' @importFrom scales comma
 #' @examples
 #' g_hospital()
 #' @name g_hospital
@@ -46,7 +47,8 @@ g_h <-
   geom_step(aes(col = "blue")) +
   scale_x_date(date_labels = "%d %b",
                date_breaks = "2 days") +
-  scale_y_continuous(breaks = c(seq(0,max_h, max_h / 4)),
+  scale_y_continuous(labels = scales::comma,
+                     breaks = c(seq(0,max_h, max_h / 4)),
                      limits = c(0,max_h)) +
   geom_text(data = df_h %>% tail(1),
             check_overlap = TRUE,

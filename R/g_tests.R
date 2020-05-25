@@ -3,7 +3,7 @@
 #' @description This function graphs the COVID19 tests in RD.
 #' @usage g_tests()
 #' @param savepng Logical. Should save a png version of the plot? Default FALSE.
-
+#' @importFrom scales comma
 #' @return Graph of daily and accumulated tests both in units and per million inhabitants
 #' and save a copy in png format on the computer to the address defined in \code{setwd()}.
 #' @export
@@ -106,13 +106,14 @@ g_tests <-
     g_tests <-
       df_tests %>%
       ggplot(aes(x = date, y = Tests)) +
-      geom_pointline(aes(size = Tests, fill = "blue", col = "blue")) +
+      geom_pointline(aes(fill = "blue", col = "blue"), size = 2) +
       scale_x_date(date_labels = "%d %b",
                    date_breaks = "2 days") +
       scale_y_continuous(breaks = c(seq(0,
                                         max_tests,
                                         max_tests / 4)),
-                         limits = c(0,max_tests)) +
+                         limits = c(0,max_tests),
+                         labels = comma) +
       geom_text(data = tail(df_tests, 1),
                 check_overlap = TRUE,
                 size = 4.5,
@@ -128,13 +129,14 @@ g_tests <-
     g_tests_m <-
       df_tests %>%
       ggplot(aes(x = date, y = Tests_m)) +
-      geom_pointline(aes(size = Tests_m, fill = "blue", col = "blue")) +
+      geom_pointline(aes(fill = "blue", col = "blue"), size = 2) +
       scale_x_date(date_labels = "%d %b",
                    date_breaks = "2 days") +
       scale_y_continuous(breaks = c(seq(0,
                                         max_tests_m,
                                         max_tests_m / 4)),
-                         limits = c(0,max_tests_m)) +
+                         limits = c(0,max_tests_m),
+                         labels = comma) +
       geom_text(data = tail(df_tests, 1),
                 check_overlap = TRUE,
                 size = 4.5,
@@ -154,7 +156,8 @@ g_tests <-
       scale_x_date(date_labels = "%d %b",
                    date_breaks = "2 days") +
       scale_y_continuous(breaks = c(seq(0, max_tests_cum + 500, (max_tests_cum + 500)/ 4)),
-                         limits = c(0,max_tests_cum + 100)) +
+                         limits = c(0,max_tests_cum + 100),
+                         labels = comma) +
       geom_text(data = tail(df_tests, 1),
                 check_overlap = TRUE,
                 size = 4.5,
@@ -174,7 +177,8 @@ g_tests <-
       scale_x_date(date_labels = "%d %b",
                    date_breaks = "2 days") +
       scale_y_continuous(breaks = c(seq(0, max_tests_cum_m + 100, (max_tests_cum_m + 100)/ 4)),
-                         limits = c(0,max_tests_cum_m + 100)) +
+                         limits = c(0,max_tests_cum_m + 100),
+                         labels = comma) +
       geom_text(data = tail(df_tests, 1),
                 check_overlap = TRUE,
                 size = 4.5,

@@ -9,7 +9,7 @@
 #' @examples
 #' load_themes()
 
-#' @name load_themes
+#' @name load_themes☺
 #'
 #'
 
@@ -118,9 +118,7 @@ strip.background = element_rect(color = "white",
 ),
 
 
-
-
-# Darktheme -----------------------------------------------------------???----
+# Darktheme ---------------------------------------------------------------
 
 t_darkblue =   theme_clean() +
    theme(plot.title = element_text(hjust = 0,

@@ -46,9 +46,10 @@ min_per_pos <-
 
 max_per_pos <-
   max(df_per_pos$Pos_p, na.rm = TRUE) %>%
-  round(digits = -1)
+  round(digits = -1) %>%
+  sum(5)
 
-
+range_per_pos <- (max_per_pos - min_per_pos) / 2
 
 g_per_pos <-
   df_per_pos %>%
@@ -61,7 +62,7 @@ g_per_pos <-
   geom_point(aes(col = "blue"), size = 2) +
   scale_color_manual(values = c("white", "white")) +
   scale_fill_manual(values = c("white", "white")) +
-  scale_y_continuous(breaks = c(seq(min_per_pos,max_per_pos, 5)),
+  scale_y_continuous(breaks = c(seq(min_per_pos,max_per_pos, range_per_pos)),
                      limits = c(min_per_pos,max_per_pos)) +
   lab_per_pos +
   scale_x_date(date_labels = "%d %b",

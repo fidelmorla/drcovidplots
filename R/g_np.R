@@ -8,6 +8,7 @@
 #' @return Graph of the total number of negative and positives cases and saves a
 #' copy in png format to the computer at the address defined in \code{setwd()}.
 #' @export
+#' @importFrom scales comma
 #' @examples
 #' g_np()
 #' @name g_np
@@ -55,7 +56,7 @@ per_pos <-
 lab_np <-
   labs(title = "RD: Positive and negative tests of COVID-19",
        subtitle  =  paste0("Total tests = ",
-                           total_tests,
+                           comma(total_tests),
                            " (Positive = ",
                            per_pos,
                            "%)"),
@@ -71,21 +72,22 @@ g_np <-
              y = N,
              color = Cases,
              fill = Cases,
-             label = label_N)) +
+             label = comma(label_N))) +
   geom_bar(position = "stack",
            stat="identity",
-           width = 0.75,
+           width = 1,
            color = NA) +
   scale_fill_manual(values = c("#d1d1d1", '#850000')) +
   scale_color_manual(values = c("#850000", 'white')) +
   geom_text(angle = 90,
             check_overlap = TRUE,
-            size = 4,
+            size = 3,
             show.legend = FALSE,
             position = position_stack(vjust = 0.5)) +
   scale_x_date(date_labels = "%d %b",
                date_breaks = "2 days") +
-  scale_y_continuous(breaks = c(seq(0,max_total_tests,max_total_tests / 4)),
+  scale_y_continuous(labels = scales::comma,
+                     breaks = c(seq(0,max_total_tests,max_total_tests / 4)),
                      limits = c(0,max_total_tests)) +
   lab_np +
   t_legend

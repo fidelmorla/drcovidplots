@@ -5,6 +5,7 @@
 #' @param savepng Logical. Should save a png version of the plot? Default FALSE.
 #' @return GIF with the evolution of the new cases and total cases and save a
 #' copy to the computer at the address defined in \code{setwd()}.
+#' @importFrom scales comma
 #' @export
 #' @examples
 #' g_evolution_covid()
@@ -79,6 +80,7 @@ g_evolution_covid <-
       scale_x_date(limits = lim_dates,
                    date_labels = "%d %b",
                    date_breaks = "2 days") +
+      scale_y_continuous(labels = scales::comma) +
       transition_reveal(date)  +
       coord_cartesian(clip = 'off') +
       t6

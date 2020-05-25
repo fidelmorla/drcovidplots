@@ -8,6 +8,7 @@
 #' @return Graph of the distribution according to sex of the positives and saves a
 #' copy in png format to the computer at the address defined in \code{setwd()}.
 #' @export
+#' @importFrom scales comma
 #' @examples
 #' g_sex()
 #' @name g_sex
@@ -46,7 +47,7 @@ max_sex <-
   df_sex$Positive %>%
   max() %>%
   as.integer() %>%
-  round(digits = -3) + 800
+  round(digits = -3) + 1000
 
 
 rep_actual <-
@@ -55,7 +56,7 @@ rep_actual <-
 lab_sex <-
   labs(title = "DR: Distribution by sex of COVID-19 positives cases",
        subtitle  =  paste0('Total positives cases = ',
-                           total_positive,
+                           comma(total_positive),
                            ' (% del total)'),
        caption  = paste0("Source: @fidelmorla with the special bulletin #",
                          rep_actual,
@@ -75,11 +76,11 @@ g_positives_by_sex <-
              fill = reorder(Sex, -Positive, order = TRUE),
              col = reorder(Sex, -Positive, order = TRUE))) +
   geom_col() +
-  scale_y_continuous(breaks = c(seq(0,max_sex,max_sex/4)),
-                     limits = c(0,max_sex)) +
+  scale_y_continuous(labels = comma,
+                     breaks = c(seq(0,max_sex,max_sex/4)),
+                     limits = c(0,max_sex + 1000)) +
   geom_text(aes(size = 18,
-                label = paste0(sprintf("%d",
-                                       round(Positive,
+                label = paste0(comma(round(Positive,
                                              digits = 0)),
                                " (",
                                sprintf("%.1f%%",

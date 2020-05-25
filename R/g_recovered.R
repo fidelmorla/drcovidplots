@@ -6,6 +6,7 @@
 
 #' @return Graph of the recovered persons and saves a
 #' copy in png format to the computer at the address defined in \code{setwd()}.
+#' @importFrom scales comma
 #' @export
 #' @examples
 #' g_recovered()
@@ -43,25 +44,25 @@ max_rec <-
   df_rec %>%
   summarise(max_rec = max(Recovered)) %>%
   as.integer() %>%
-  round(digits = -2) %>%
-  sum(100)
+  round(digits = -3) %>%
+  sum(1000)
 
 g_rec <-
   df_rec %>%
-  ggplot(aes(x = date, y = Recovered, size = Recovered / 4)) +
-  geom_pointline(aes(fill = "blue", col = "blue")) +
+  ggplot(aes(x = date, y = Recovered)) +
+  geom_pointline(aes(fill = "blue", col = "blue"), size = 2) +
   scale_x_date(date_labels = "%d %b",
-               date_breaks = "2 days") +
-  scale_y_continuous(breaks = c(seq(0,max_rec, max_rec / 4)),
+               date_breaks = "3 days") +
+  scale_y_continuous(labels = comma,
+                     breaks = c(seq(0,max_rec, max_rec / 4)),
                      limits = c(0,max_rec)) +
-  geom_text(check_overlap = TRUE,
+  geom_text(data = tail(df_rec, n = 1),
+            check_overlap = TRUE,
             size = 4.5,
-            vjust = -0.25,
-            hjust = 1.5,
+            vjust = -0.55,
+            hjust = 0.55,
             show.legend = FALSE,
-            aes(col = "l", label = ifelse(Recovered > 1300,
-                                          Recovered,
-                                          NA))) +
+            aes(col = "l", label = comma(Recovered))) +
   scale_fill_manual(values = c("white", 'white')) +
   scale_color_manual(values = c("white", 'white')) +
   lab_rec +

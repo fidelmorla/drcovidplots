@@ -6,6 +6,7 @@
 #' @usage g_density()
 #' @return Graph of daily and accumulated tests both in units and per million inhabitants
 #' and save a copy in png format on the computer to the address defined in \code{setwd()}.
+#' @importFrom scales comma
 #' @export
 #' @examples
 #' g_density()
@@ -87,7 +88,8 @@ g_den <-
                  label = "Density (left) . Cases (right)") +
   scale_color_manual(values = heatcol_den) +
   scale_fill_manual(values = heatcol_den) +
-  scale_y_continuous(breaks = c(seq(0,max_den + 5, (max_den + 5 )/ 5)),
+  scale_y_continuous(labels = scale::comma,
+                     breaks = c(seq(0,max_den + 5, (max_den + 5 )/ 5)),
                      limits = c(-1,max_den + 5)) +
   coord_flip() +
   lab_den +

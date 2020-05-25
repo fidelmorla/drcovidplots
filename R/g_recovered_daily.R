@@ -8,6 +8,7 @@
 #' @return Graph of the daily recovered persons and saves a
 #' copy in png format to the computer at the address defined in \code{setwd()}.
 #' @export
+#' @importFrom scales comma
 #' @examples
 #' g_recovered_daily()
 #' @name g_recovered_daily
@@ -49,17 +50,18 @@ max_rec_d <-
 
 g_rec_d <-
   df_rec_d %>%
-  ggplot(aes(x = date, y = N_recovered, size = N_recovered / 4)) +
-  geom_pointline(aes(fill = "blue", col = "blue")) +
-  scale_x_date(date_labels = "%d %b",
-               date_breaks = "2 days") +
+  ggplot(aes(x = date, y = N_recovered)) +
+  geom_pointline(aes(fill = "blue", col = "blue"), size = 2) +
+  scale_x_date(labels = comma,
+               date_labels = "%d %b",
+               date_breaks = "3 days") +
   scale_y_continuous(breaks = c(seq(0,max_rec_d, max_rec_d / 5)),
                      limits = c(0,max_rec_d)) +
   geom_text(data = tail(df_rec_d, n = 1),
             check_overlap = TRUE,
             size = 4.5,
             vjust = -0.25,
-            hjust = 1.5,
+            hjust = -0.1,
             show.legend = FALSE,
             aes(col = "l", label = N_recovered)) +
   scale_fill_manual(values = c("white", 'white')) +

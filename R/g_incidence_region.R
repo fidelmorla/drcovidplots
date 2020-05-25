@@ -5,6 +5,7 @@
 #' @param savepng Logical. Should save a png version of the plot? Default FALSE.
 #' @return Graph of incidence and case fatality by region and save a
 #' copy in png format to the computer at the address defined in \code{setwd()}.
+#' @importFrom scales comma
 #' @export
 #' @examples
 #' g_incidence_region()
@@ -39,8 +40,10 @@ df_inc %<>%
          Reg = case_when(Province %in% Metropolitan ~ 'Metropolitan',
                          Province %in% North ~ 'North',
                          Province %in% South ~ 'South',
-                         Province %in% East ~ 'East')) %>%
-  filter(Cases != 0)
+                         Province %in% East ~ 'East',
+                         Province %in% NE ~ 'NOESP')) %>%
+  filter(Cases != 0) %>%
+  drop_na(Incidence)
 
 
 heatcol_inc <- sequential_hcl(n = 32,
@@ -60,14 +63,14 @@ rep_actual <- data_cum$Reports %>% max(na.rm = TRUE)
 
 max_inc_reg <-
   df_inc %>%
-  summarise(max_inc = max(Incidence)) %>%
+  summarise(max_inc = max(Incidence, na.rm = TRUE)) %>%
   as.numeric() %>%
   round(digits = -1) %>%
   sum(15)
 
 max_let_reg <-
   df_inc %>%
-  summarise(max_inc = max(Let)) %>%
+  summarise(max_inc = max(Let, na.rm = TRUE)) %>%
   as.numeric() %>%
   round(digits = -1) %>%
   sum(10)
@@ -95,7 +98,8 @@ g_inclet_reg <-
   geom_jitter() +
   scale_color_manual(values = heatcol_inc_reg) +
   scale_fill_manual(values = heatcol_inc_reg) +
-  scale_y_continuous(breaks = c(seq(0,max_inc_reg, max_inc_reg/ 5)),
+  scale_y_continuous(labels = scales::comma,
+                     breaks = c(seq(0,max_inc_reg, max_inc_reg/ 5)),
                      limits = c(-5,max_inc_reg)) +
   facet_rep_wrap(. ~ fct_inorder(Reg),
                  ncol = 2,

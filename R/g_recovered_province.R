@@ -7,6 +7,7 @@
 #' @return Graph of the recovered persons ordered by provinces and saves a
 #' copy in png format to the computer at the address defined in \code{setwd()}.
 #' @export
+#' @importFrom scales comma
 #' @examples
 #' g_recovered_province()
 #' @name g_recovered_province
@@ -47,7 +48,7 @@ max_rec_p <-
   select(max_rec_prov) %>%
   as.integer() %>%
   round(digits = -2) %>%
-  sum(100)
+  sum(500)
 
 total_rec <- sum(df_rec_prov$Recovered)
 total_tr <- round(100 * total_rec/sum(df_rec_prov$Cases),
@@ -57,7 +58,7 @@ total_tr <- round(100 * total_rec/sum(df_rec_prov$Cases),
 lab_rec_prov <-
   labs(title = "DR: Recovered de COVID-19 por province",
        subtitle  =  paste0("Total = ",
-                           total_rec,
+                           comma(total_rec),
                            " (Recovery rate = ",
                            total_tr,
                            "%)"),
@@ -94,10 +95,10 @@ g_rec_prov <-
                                     max_rec_p,
                                     max_rec_p / 4)),
                      limits = c(0,
-                                max_rec_p)) +
-  geom_text(aes(size = 18,
-                label = paste0(sprintf("%d",
-                                       round(Recovered,
+                                max_rec_p),
+                     labels = comma) +
+  geom_text(aes(size = 16,
+                label = paste0(comma(round(Recovered,
                                              digits = 0)),
                                " (",
                                sprintf("%.1f%%",
