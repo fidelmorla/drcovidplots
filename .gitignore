@@ -1,3 +1,6 @@
 .Rhistory
 .RData
 .Rproj.user
+drcovidplots.Rcheck/
+drcovidplots*.tar.gz
+drcovidplots*.tgz

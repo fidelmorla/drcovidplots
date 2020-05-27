@@ -2,6 +2,7 @@
 #' @aliases g_density
 #' @description This function graphs the correlation between cases of COVID19
 #' and population density of COVID19 in DR.
+#' @param saveplot Logical. Should save the ggplot objet to the \code{.GlobalEnv}? Default FALSE.
 #' @param savepng Logical. Should save a png version of the plot? Default FALSE.
 #' @usage g_density()
 #' @return Graph of daily and accumulated tests both in units and per million inhabitants
@@ -12,7 +13,8 @@
 #' g_density()
 #' @name g_density
 
-g_density <- function(savepng = FALSE){
+g_density <- function(saveplot = FALSE,
+                      savepng = FALSE){
 
   if (exists('data_province') == FALSE) {
     stop("data_province is not present, run load_data_covid_dr()")
@@ -25,13 +27,10 @@ g_density <- function(savepng = FALSE){
     stop("Themes are not present, run load_themes()")
   }
 
-
-# Correlacion con la density ------------------------------------------------
-  rep_actual <- data_cum$Reports %>% max(na.rm = TRUE)
-
 df_den_cases <-
 data_province %>%
-  filter(date == max(date)) %>%
+  filter(date == max(date),
+         Province != 'NOESP') %>%
   select(Province, Cases) %>%
   left_join(
     y = data_density %>%
@@ -46,11 +45,7 @@ heatcol_den <- sequential_hcl(n = 32,
                               c = 225,
                               c1 = 150)
 
-max_den <-
-  df_den_cases %>%
-  summarise(max_den = max(Density)) %>%
-  as.numeric() %>%
-  round(digits = -1)
+max_den <- 14
 
 cor_den <-
   cor(x = df_den_cases %>% select(Cases, Density)) %>%
@@ -88,16 +83,21 @@ g_den <-
                  label = "Density (left) . Cases (right)") +
   scale_color_manual(values = heatcol_den) +
   scale_fill_manual(values = heatcol_den) +
-  scale_y_continuous(labels = scale::comma,
-                     breaks = c(seq(0,max_den + 5, (max_den + 5 )/ 5)),
-                     limits = c(-1,max_den + 5)) +
+  scale_y_continuous(labels = scales::comma,
+                     breaks = c(seq(0,max_den, max_den/ 2)),
+                     limits = c(-1,max_den + 1)) +
   coord_flip() +
   lab_den +
   t6 +
   theme(axis.text.x = element_text(angle = 0),
         axis.text.y = element_text(color = rev(heatcol_den)))
 
+print(g_den)
+
+if (saveplot == TRUE) {
 assign('g_den', g_den, envir = .GlobalEnv)
+}
+
 
 if (savepng == TRUE) {
 
@@ -108,7 +108,5 @@ ggsave(filename = "density.png",
        height = 10.466666666666667 / 1.5,
        units = "in")
 }
-
-return(print(.GlobalEnv$g_den))
 
 }
