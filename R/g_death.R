@@ -2,6 +2,7 @@
 #' @aliases g_death
 #' @description This function graphs the total number of deaths by COVID19 in the Dominican Republic.
 #' @usage g_death()
+#' @param saveplot Logical. Should save the ggplot objet to the \code{.GlobalEnv}? Default FALSE.
 #' @param savepng Logical. Should save a png version of the plot? Default FALSE.
 #' @return Graph of the total number of deaths and saves a
 #' copy in png format to the computer at the address defined in \code{setwd()}.
@@ -13,7 +14,8 @@
 #' @name g_death
 
 g_death <-
-  function(savepng = FALSE) {
+  function(saveplot = FALSE,
+           savepng = FALSE) {
 
     if (exists('data_province') == FALSE) {
       stop("data_province is not present, run load_data_covid_dr()")
@@ -22,6 +24,7 @@ g_death <-
     if (exists('data_cum') == FALSE) {
       stop("data_cum is not present, run load_data_covid_dr()")
     }
+
     if (exists('t3') == FALSE) {
       stop("Themes are not present, run load_themes()")
     }
@@ -113,7 +116,11 @@ rep_actual <- data_cum$Reports %>% max(na.rm = TRUE)
       theme(axis.text.x = element_text(angle = 0),
             axis.text.y = element_text(color = rev(heatcol_dths)))
 
-    assign('g_dths', g_dths, envir = .GlobalEnv)
+    print(g_dths)
+
+    if (saveplot == TRUE){
+    assign('g_deaths', g_dths, envir = .GlobalEnv)
+    }
 
     if (savepng == TRUE) {
       ggsave(filename = "deaths.png",
@@ -122,11 +129,7 @@ rep_actual <- data_cum$Reports %>% max(na.rm = TRUE)
              width = 18.333333333333332 / 1.5,
              height = 10.466666666666667 / 1.5,
              units = "in")
-
-
     }
-
-    return(print(.GlobalEnv$g_dths))
 
   }
 
