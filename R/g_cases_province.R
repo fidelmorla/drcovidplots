@@ -1,8 +1,12 @@
 #' @title Provinces with most positive cases of COVID19
 #' @aliases g_case_province
-#' @description This function creategraphs the provinces with the most positive cases of COVID19 in the DR.
+#' @description This function creategraphs the provinces with the most positive
+#'   cases of COVID19 in the DR.
 #' @usage g_case_province()
+#' @param saveplot Logical. Should save the ggplot objet to the \code{.GlobalEnv}? Default FALSE.
 #' @param savepng Logical. Should save a png version of the plot? Default FALSE.
+#' @param n_province Integer. Number of provinces to show on plot. Range = [2,32].
+#'   Default n_province = 15L.
 #' @return Graph of the provinces with the most positive cases of COVID19 and saves a
 #' copy in png and gif format to the computer at the address defined in \code{setwd()}.
 #' @importFrom scales comma
@@ -10,11 +14,13 @@
 #' @examples
 #' g_case_provinces()
 #' g_case_provinces(savepng = TRUE)
+#' g_case_provinces(n_province = 25L, saveplot = TRUE)
 #' @name g_cases_province
 #' @section
 
-g_cases_province <- function(savepng = FALSE,
-                             n_province = 15){
+g_cases_province <- function(n_province = 15L,
+                             saveplot = FALSE,
+                             savepng = FALSE) {
 
     if (exists('data_province') == FALSE) {
       stop("data_province is not present, run load_data_covid_dr()")
@@ -25,6 +31,18 @@ g_cases_province <- function(savepng = FALSE,
     }
   if (exists('t3') == FALSE) {
     stop("Themes are not present, run load_themes()")
+  }
+
+  if (n_province < 2) {
+    stop("n_province has to be an interger betweem 2 and 32")
+  }
+
+  if (n_province > 32) {
+    stop("n_province has to be an interger betweem 2 and 32")
+  }
+
+  if (as.integer(n_province) == FALSE){
+    stop("n_province has to be an interger betweem 2 and 32")
   }
 
 
@@ -45,7 +63,8 @@ df_prov_s <-
          Value_lbl = paste0("",N)) %>%
   ungroup() %>%
   filter(date == max(date),
-         rank <= n_province) %>%
+         rank <= n_province,
+         Province != 'NOESP') %>%
   arrange(rank)
 
 max_prov_s <-
@@ -66,7 +85,7 @@ heatcol_s <- sequential_hcl(n = n_province,
 )
 
 lab_prov_s <-
-  labs(title = paste0('DR: Top ',
+  labs(title = paste0('DR: Top-',
                       n_province,
                       " provinces affected by COVID-19"),
        caption  = "Source: @fidelmorla with the special bulletins of @SaludPublicaRD",
@@ -84,8 +103,10 @@ g_cases_prov <-
   scale_y_continuous(labels = scales::comma,
                      breaks = c(seq(0,max_prov_s,max_prov_s/4)),
                      limits = c(0,max_prov_s + 500)) +
-  geom_text(aes(size = 15, label = sprintf("%d", round(N, digits = 0))),
-            hjust = -1.1, show.legend = FALSE) +
+  geom_text(aes(size = 15,
+                label = scales::comma(N, accuracy = 1)),
+            hjust = -0.5,
+            show.legend = FALSE) +
   scale_fill_manual(values = heatcol_s) +
   scale_color_manual(values = heatcol_s) +
   coord_flip() +
@@ -95,8 +116,11 @@ g_cases_prov <-
   theme(axis.text.x = element_text(angle = 0),
         axis.text.y = element_text(color = rev(heatcol_s)))
 
-assign('g_cases_prov', g_cases_prov, envir = .GlobalEnv)
+print(g_cases_prov)
 
+if (saveplot == TRUE) {
+assign('g_cases_prov', g_cases_prov, envir = .GlobalEnv)
+}
 
 if (savepng == TRUE) {
   ggsave(filename = paste0("top_",n_province,".png"),
@@ -105,10 +129,6 @@ if (savepng == TRUE) {
          width = 18.333333333333332 / 1.5,
          height = 10.466666666666667 / 1.5,
          units = "in")
-
-
 }
-
-return(print(.GlobalEnv$g_cases_prov))
 
 }
