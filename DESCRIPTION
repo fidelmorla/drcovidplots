@@ -3,7 +3,9 @@ Type: Package
 Title: Plots for COVID19 data from Dominican Republic 
 Version: 0.1.4
 Authors@R: c(person(given = "Fidel", family = "Morla, MA", role = c("aut", "cre"),
-                     email = "fidel.morla@gmail.com"))
+                     email = "fidel.morla@gmail.com"),
+             person(given = "Johan", family = "Rosa", role = c("aut", "rev"),
+                     email = "johan.rosaperez@gmail.com"))
 Description: This packages generates several plots using COVID-19 data from the Minister of Public Health and Social Assintance from Dominican Republic for COVID19.
 License: Unlimited
 Encoding: UTF-8
