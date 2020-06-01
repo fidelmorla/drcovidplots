@@ -3,6 +3,7 @@
 #' @description This function graphs the daily total number negative and positive COVID19 cases
 #' in the Dominican Republic.
 #' @usage g_np_daily()
+#' @param saveplot Logical. Should save the ggplot objet to the \code{.GlobalEnv}? Default FALSE.
 #' @param savepng Logical. Should save a png version of the plot? Default FALSE.
 
 #' @return Graph of the daily total number of negative and positives cases and saves a
@@ -10,11 +11,12 @@
 #' @export
 #' @examples
 #' g_np_daily()
+#' g_np_daily(saveplot = FALSE, savepng = FALSE)
 #' @name g_np_daily
 
 
-g_np_daily <-
-  function(savepng = FALSE){
+g_np_daily <- function(saveplot = FALSE,
+                       savepng = FALSE){
     if (exists('data_province') == FALSE) {
       stop("data_province is not present, run load_data_covid_dr()")
     }
@@ -102,7 +104,10 @@ g_np_daily <-
   lab_np_daily +
   t_legend
 
-assign('g_np_daily', g_np_daily, envir = .GlobalEnv)
+print(g_np_daily)
+
+if (saveplot == TRUE) {assign('g_np_daily', g_np_daily, envir = .GlobalEnv)}
+
 if (savepng == TRUE){
 
 ggsave(filename = "dailynp.png",
@@ -112,6 +117,5 @@ ggsave(filename = "dailynp.png",
        height = 10.466666666666667 / 1.5,
        units = "in")
 }
-return(print(.GlobalEnv$g_np_daily))
 
 }

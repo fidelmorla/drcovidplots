@@ -2,6 +2,7 @@
 #' @aliases g_region
 #' @description This function graphs the positive cases of COVID19 by region in the DR.
 #' @usage g_region()
+#' @param saveplot Logical. Should save the ggplot objet to the \code{.GlobalEnv}? Default FALSE.
 #' @param savepng Logical. Should save a png version of the plot? Default FALSE.
 
 #' @return Graph of positive cases of COVID19 by region and save a
@@ -12,7 +13,8 @@
 #' g_region()
 #' @name g_region
 
-g_region <- function(savepng = FALSE){
+g_region <- function(saveplot = FALSE,
+                     savepng = FALSE){
 
   if (exists('data_province') == FALSE) {
     stop("data_province is not present, run load_data_covid_dr()")
@@ -47,7 +49,7 @@ max_reg <-
   select(Cases) %>%
   max() %>%
   round(digits = -3) %>%
-  sum(1000) %>%
+  sum(2000) %>%
   as.integer()
 
 total_positives <-
@@ -102,7 +104,9 @@ g_reg <-
   theme(axis.text.x = element_text(angle = 0),
         axis.text.y = element_text(color = rev(col_reg)))
 
-assign('g_reg', g_reg, envir = .GlobalEnv)
+print(g_reg)
+
+if (saveplot == TRUE) {assign('g_reg', g_reg, envir = .GlobalEnv)}
 
 if (savepng == TRUE){
 
@@ -113,6 +117,5 @@ if (savepng == TRUE){
          height = 10.466666666666667 / 1.5,
          units = "in")
 }
-return(print(.GlobalEnv$g_reg))
 
 }

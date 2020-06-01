@@ -3,6 +3,7 @@
 #' @description This function graphs the daily number of persons recovered from COVID19
 #' in the Dominican Republic.
 #' @usage g_recovered_daily()
+#' @param saveplot Logical. Should save the ggplot objet to the \code{.GlobalEnv}? Default FALSE.
 #' @param savepng Logical. Should save a png version of the plot? Default FALSE.
 
 #' @return Graph of the daily recovered persons and saves a
@@ -11,9 +12,11 @@
 #' @importFrom scales comma
 #' @examples
 #' g_recovered_daily()
+#' g_recovered_daily(saveplot = FALSE, savepng = FALSE)
 #' @name g_recovered_daily
 
-g_recovered_daily <- function(savepng = FALSE){
+g_recovered_daily <- function(saveplot = FALSE,
+                              savepng = FALSE){
 
   if (exists('data_province') == FALSE) {
     stop("data_province is not present, run load_data_covid_dr()")
@@ -69,8 +72,11 @@ g_rec_d <-
   lab_rec_d +
   t_darkgreen
 
-assign('g_rec_d', g_rec_d, envir = .GlobalEnv)
+print(g_rec_d)
 
+if (saveplot == TRUE) {
+assign('g_rec_d', g_rec_d, envir = .GlobalEnv)
+}
 
 if (savepng == TRUE){
 
@@ -81,7 +87,5 @@ if (savepng == TRUE){
          height = 10.466666666666667 / 1.5,
          units = "in")
 }
-
-return(print(.GlobalEnv$g_rec_d))
 
 }

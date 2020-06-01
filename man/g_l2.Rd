@@ -7,6 +7,8 @@
 g_l2()
 }
 \arguments{
+\item{saveplot}{Logical. Should save the ggplot objet to the \code{.GlobalEnv}? Default FALSE.}
+
 \item{savepng}{Logical. Should save a png version of the plot? Default FALSE.}
 }
 \value{
@@ -19,6 +21,7 @@ as recommended by Ghani \emph{et al.} (2005) for the Dominican Republic
 }
 \examples{
 g_l2()
+g_l2(saveplot = FALSE, savepng = FALSE)
 }
 \references{
 A. C. Ghani, C. A. Donnelly, D. R. Cox, J. T. Griffin, C. Fraser, T. H. Lam, L. M. Ho,

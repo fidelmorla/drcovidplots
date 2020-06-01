@@ -2,6 +2,7 @@
 #' @aliases g_evolution_covid
 #' @description This function generates a gif with the evolution of the new cases and total cases of COVID19 in DR.
 #' @usage g_evolution_covid()
+#' @param saveplot Logical. Should save the ggplot objet to the \code{.GlobalEnv}? Default FALSE.
 #' @param savepng Logical. Should save a png version of the plot? Default FALSE.
 #' @return GIF with the evolution of the new cases and total cases and save a
 #' copy to the computer at the address defined in \code{setwd()}.
@@ -9,10 +10,11 @@
 #' @export
 #' @examples
 #' g_evolution_covid()
+#' g_evolution_covid(saveplot = TRUE)
 #' @name g_evolution_covid
 
-g_evolution_covid <-
-  function(savepng = FALSE){
+g_evolution_covid <- function(saveplot = FALSE,
+                              savepng = FALSE){
 
     if (exists('data_province') == FALSE) {
       stop("data_province is not present, run load_data_covid_dr()")
@@ -52,7 +54,7 @@ g_evolution_covid <-
       data_cum %>%
         select(date) %>%
         filter(date == max(date)) %$%
-        date + 1
+        date + 5
     )
 
 
@@ -73,13 +75,12 @@ g_evolution_covid <-
       facet_wrap(. ~ covid, ncol = 1, scales = "free_y")  +
       geom_point(size = 2) +
       geom_text(show.legend = FALSE, aes(size = 24,
-                                         label = sprintf("%d",
-                                                         N)),
+                                         label = scales::comma(N, accuracy = 1)),
                 hjust = -0.35) +
       lab_lines +
       scale_x_date(limits = lim_dates,
                    date_labels = "%d %b",
-                   date_breaks = "2 days") +
+                   date_breaks = "3 days") +
       scale_y_continuous(labels = scales::comma) +
       transition_reveal(date)  +
       coord_cartesian(clip = 'off') +
@@ -90,7 +91,11 @@ g_evolution_covid <-
             height = 628/1.5,
             end_pause = 35)
 
-    assign('g_cov', g_cov, envir = .GlobalEnv)
+    print(g_cov)
+
+    if (saveplot == TRUE) {
+      assign('g_cov', g_cov, envir = .GlobalEnv)
+      }
 
     if (savepng == TRUE) {
 

@@ -2,6 +2,7 @@
 #' @aliases g_incidence
 #' @description This function graphs the incidence of COVID19 in DR.
 #' @usage g_incidence()
+#' @param saveplot Logical. Should save the ggplot objet to the \code{.GlobalEnv}? Default FALSE.
 #' @param savepng Logical. Should save a png version of the plot? Default FALSE.
 #' @importFrom scales comma
 #' @return Incidence chart and save a
@@ -9,11 +10,12 @@
 #' @export
 #' @examples
 #' g_incidence()
+#' g_incidence(saveplot = FALSE, savepng = FALSE)
 #' @name g_incidence
 
 
-g_incidence <-
-  function(savepng = FALSE){
+g_incidence <- function(saveplot = FALSE,
+                        savepng = FALSE){
     if (exists('data_province') == FALSE) {
       stop("data_province is not present, run load_data_covid_dr()")
     }
@@ -42,7 +44,8 @@ df_inc %<>%
                          Province %in% South ~ 'South',
                          Province %in% East ~ 'East',
                          Province %in% NE ~ 'NOESP')) %>%
-  filter(Cases > 0)
+  filter(Cases > 0) %>%
+  drop_na(Incidence)
 
 
 heatcol_inc <- sequential_hcl(n = 33,
@@ -102,7 +105,9 @@ g_inc <-
   theme(axis.text.x = element_text(angle = 0),
         axis.text.y = element_text(color = rev(heatcol_inc)))
 
-assign('g_inc', g_inc, envir = .GlobalEnv)
+print(g_inc)
+
+if (saveplot == TRUE) {assign('g_inc', g_inc, envir = .GlobalEnv)}
 
 if (savepng == TRUE) {
 
@@ -113,6 +118,5 @@ ggsave(filename = "incidence.png",
        height = 10.466666666666667 / 1.5,
        units = "in")
 }
-return(print(.GlobalEnv$g_inc))
 
 }

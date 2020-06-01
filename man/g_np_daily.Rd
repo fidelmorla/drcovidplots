@@ -7,6 +7,8 @@
 g_np_daily()
 }
 \arguments{
+\item{saveplot}{Logical. Should save the ggplot objet to the \code{.GlobalEnv}? Default FALSE.}
+
 \item{savepng}{Logical. Should save a png version of the plot? Default FALSE.}
 }
 \value{
@@ -19,4 +21,5 @@ in the Dominican Republic.
 }
 \examples{
 g_np_daily()
+g_np_daily(saveplot = FALSE, savepng = FALSE)
 }

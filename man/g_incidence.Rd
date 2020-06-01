@@ -7,6 +7,8 @@
 g_incidence()
 }
 \arguments{
+\item{saveplot}{Logical. Should save the ggplot objet to the \code{.GlobalEnv}? Default FALSE.}
+
 \item{savepng}{Logical. Should save a png version of the plot? Default FALSE.}
 }
 \value{
@@ -18,4 +20,5 @@ This function graphs the incidence of COVID19 in DR.
 }
 \examples{
 g_incidence()
+g_incidence(saveplot = FALSE, savepng = FALSE)
 }

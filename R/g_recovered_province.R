@@ -2,6 +2,7 @@
 #' @aliases g_recovered_province
 #' @description This function graphs those recovered from COVID19 in the Dominican Republic ordered by provinces.
 #' @usage g_recovered_province()
+#' @param saveplot Logical. Should save the ggplot objet to the \code{.GlobalEnv}? Default FALSE.
 #' @param savepng Logical. Should save a png version of the plot? Default FALSE.
 
 #' @return Graph of the recovered persons ordered by provinces and saves a
@@ -13,7 +14,8 @@
 #' @name g_recovered_province
 
 
-g_recovered_province <- function(savepng = FALSE){
+g_recovered_province <- function(saveplot = FALSE,
+                                 savepng = FALSE){
 
     if (exists('data_province') == FALSE) {
       stop("data_province is not present, run load_data_covid_dr()")
@@ -115,7 +117,11 @@ g_rec_prov <-
   theme(axis.text.x = element_text(angle = 0),
         axis.text.y = element_text(color = rev(heatcol_rec)))
 
+print(g_rec_prov)
+
+if (saveplot == TRUE){
 assign('g_rec_prov', g_rec_prov, envir = .GlobalEnv)
+}
 
 if (savepng == TRUE){
 
@@ -126,5 +132,5 @@ if (savepng == TRUE){
          height = 10.466666666666667 / 1.5,
          units = "in")
 }
-return(print(.GlobalEnv$g_rec_prov))
+
 }

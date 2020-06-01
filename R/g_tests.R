@@ -2,6 +2,7 @@
 #' @aliases g_tests
 #' @description This function graphs the COVID19 tests in RD.
 #' @usage g_tests()
+#' @param saveplot Logical. Should save the ggplot objet to the \code{.GlobalEnv}? Default FALSE.
 #' @param savepng Logical. Should save a png version of the plot? Default FALSE.
 #' @importFrom scales comma
 #' @return Graph of daily and accumulated tests both in units and per million inhabitants
@@ -9,11 +10,12 @@
 #' @export
 #' @examples
 #' g_tests()
+#' g_tests(saveplot = FALSE, savepng = FALSE)
 #' @name g_tests
 
 
-g_tests <-
-  function(savepng = FALSE){
+g_tests <- function(saveplot = FALSE,
+                    savepng = FALSE){
 
     if (exists('data_province') == FALSE) {
       stop("data_province is not present, run load_data_covid_dr()")
@@ -191,6 +193,8 @@ g_tests <-
       lab_tests_cum_m +
       t_darkblue
 
+    if (saveplot == TRUE){
+
     assign('g_tests', g_tests, envir = .GlobalEnv)
 
     assign('g_tests_m', g_tests_m, envir = .GlobalEnv)
@@ -198,6 +202,7 @@ g_tests <-
     assign('g_tests_cum', g_tests_cum, envir = .GlobalEnv)
 
     assign('g_tests_cum_m', g_tests_cum_m, envir = .GlobalEnv)
+    }
 
     if (savepng == TRUE){
 

@@ -7,6 +7,8 @@
 g_positive
 }
 \arguments{
+\item{saveplot}{Logical. Should save the ggplot objet to the \code{.GlobalEnv}? Default FALSE.}
+
 \item{savepng}{Logical. Should save a png version of the plot? Default FALSE.}
 }
 \value{
@@ -18,4 +20,5 @@ This function graphs the percentage of positives with respect to the total numbe
 }
 \examples{
 g_positive()
+g_positive(saveplot = FALSE, savepng = FALSE)
 }

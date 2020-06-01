@@ -7,6 +7,8 @@
 g_sex()
 }
 \arguments{
+\item{saveplot}{Logical. Should save the ggplot objet to the \code{.GlobalEnv}? Default FALSE.}
+
 \item{savepng}{Logical. Should save a png version of the plot? Default FALSE.}
 }
 \value{
@@ -18,4 +20,5 @@ This function graphs the distribution according to the sex of the positives.
 }
 \examples{
 g_sex()
+g_sex(saveplot = FALSE, savepng = FALSE)
 }

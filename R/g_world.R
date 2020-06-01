@@ -504,9 +504,7 @@ df_w_rec <-
   mutate(world = ifelse(country %in% world, country, NA),
          col_world = ifelse(country %in% world, country, 'grey'),
          al = ifelse(country %in% la, country, NA),
-         col_la = ifelse(country %in% la, country, 'grey'),
-         alto = ifelse(rec_r > 90, country,NA),
-         col_lato = ifelse(rec_r > 90, country,'grey'))
+         col_la = ifelse(country %in% la, country, 'grey'))
 
 lab_w_rec <-
   labs(title = "World: COVID-19 recovery rate",
@@ -539,16 +537,11 @@ g_w_rec <-
              y = rec_r,
              size = rec_r)) +
   geom_point(aes(col = col_world)) +
-  geom_point(aes(y = ifelse(rec_r > 90, rec_r, NA), col = 'darkgreen')) +
   geom_text_repel(aes(label = world, col = col_world),
                   size = 3,
                   vjust = -1.5,
                   position = position_jitter()) +
-  geom_text_repel(aes(label = alto),
-                  size = 3, col = 'darkgreen',
-                  vjust = -1.5, position = position_jitter()) +
-  scale_color_manual(values = c('darkgreen', #China
-                                'darkgreen', #DR
+  scale_color_manual(values = c('green 3', #China
                                 'black', #DR
                                 'blue', #FRA
                                 'lightgrey', #NA
@@ -569,22 +562,17 @@ g_la_rec <-
              y = rec_r,
              size = rec_r)) +
   geom_point(aes(col = col_la)) +
-  geom_point(aes(y = ifelse(rec_r > 90, rec_r, NA), col = 'darkgreen')) +
   geom_text_repel(aes(label = la, col = col_la),
                   size = 3,
                   vjust = -1.5,
                   position = position_jitter()) +
-  geom_text_repel(aes(label = alto),
-                  size = 3, col = 'darkgreen',
-                  vjust = -1.5, position = position_jitter()) +
   scale_color_manual(values = c('brown', #ARG
                                 'blue', #BOL
                                 'orange', #BRA
-                                'darkgreen', #CHI
                                 '#056b5c', #CUB
                                 'red 2', #GUA
                                 'darkgoldenrod',
-                                'darkgreen', #DR
+                                'green 3', #DR
                                 'black', #ECU
                                 '#4d8a1e', #SAL
                                 'purple', #NA
@@ -600,7 +588,8 @@ g_la_rec <-
   t6 +
   theme(axis.text.x = element_text(angle = 0))
 
-assign('g_la_rec', g_la_rec, envir = .GlobalEnv)
+
+if (saveplot == TRUE) {assign('g_la_rec', g_la_rec, envir = .GlobalEnv)}
 
 if (savepng == TRUE){
 
@@ -618,4 +607,5 @@ ggsave(filename = "la_rec.png",
        height = 10.466666666666667 / 1.5,
        units = "in")
 }
+
 }

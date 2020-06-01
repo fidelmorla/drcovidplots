@@ -2,6 +2,7 @@
 #' @aliases g_sex
 
 #' @description This function graphs the distribution according to the sex of the positives.
+#' @param saveplot Logical. Should save the ggplot objet to the \code{.GlobalEnv}? Default FALSE.
 #' @param savepng Logical. Should save a png version of the plot? Default FALSE.
 
 #' @usage g_sex()
@@ -11,9 +12,11 @@
 #' @importFrom scales comma
 #' @examples
 #' g_sex()
+#' g_sex(saveplot = FALSE, savepng = FALSE)
 #' @name g_sex
 
-g_sex <- function(savepng = FALSE){
+g_sex <- function(saveplot = FALSE,
+                  savepng = FALSE){
     if (exists('data_cum') == FALSE) {
       stop("data_cum is not present, run load_data_covid_dr()")
     }
@@ -97,7 +100,9 @@ g_positives_by_sex <-
   theme(axis.text.x = element_text(angle = 0),
         axis.text.y = element_text(color = rev(col_sex)))
 
-assign('g_positives_by_sex', g_positives_by_sex, envir = .GlobalEnv)
+print(g_positives_by_sex)
+
+if (saveplot == TRUE) {assign('g_positives_by_sex', g_positives_by_sex, envir = .GlobalEnv)}
 
 if (savepng == TRUE){
 
@@ -108,7 +113,5 @@ if (savepng == TRUE){
          height = 10.466666666666667 / 1.5,
          units = "in")
 }
-return(print(.GlobalEnv$g_positives_by_sex))
-
 
 }

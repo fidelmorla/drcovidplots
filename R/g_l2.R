@@ -3,6 +3,7 @@
 #' @description This function graphs the L2 of the COVID19 in RD. L2 = 100 * Deaths / (Deaths + Recovered),
 #' as recommended by Ghani \emph{et al.} (2005) for the Dominican Republic
 #' @usage g_l2()
+#' @param saveplot Logical. Should save the ggplot objet to the \code{.GlobalEnv}? Default FALSE.
 #' @param savepng Logical. Should save a png version of the plot? Default FALSE.
 #' @return Graphic of L2 of COVID19 and save a
 #' copy in png format to the computer at the address defined in \code{setwd()}.
@@ -14,10 +15,11 @@
 #' @export
 #' @examples
 #' g_l2()
+#' g_l2(saveplot = FALSE, savepng = FALSE)
 #' @name g_l2
 
-g_l2 <-
-  function(savepng = FALSE){
+g_l2 <- function(saveplot = FALSE,
+                 savepng = FALSE){
     if (exists('data_cum') == FALSE) {
       stop("data_cum is not present, run load_data_covid_dr()")
     }
@@ -67,7 +69,9 @@ g_l2 <-
   t6 +
   lab_l2
 
-assign('g_let2', g_l2, envir = .GlobalEnv)
+print(g_l2)
+
+if(saveplot == TRUE) {assign('g_let2', g_l2, envir = .GlobalEnv)}
 
 if (savepng == TRUE){
 ggsave(filename = "l2.png",
@@ -77,5 +81,5 @@ ggsave(filename = "l2.png",
        height = 10.466666666666667 / 1.5,
        units = "in")
   }
-return(print(.GlobalEnv$g_l2))
+
 }

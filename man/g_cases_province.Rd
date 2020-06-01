@@ -8,6 +8,11 @@
 g_case_province()
 }
 \arguments{
+\item{n_province}{Integer. Number of provinces to show on plot. Range = [2,32].
+Default n_province = 15L.}
+
+\item{saveplot}{Logical. Should save the ggplot objet to the \code{.GlobalEnv}? Default FALSE.}
+
 \item{savepng}{Logical. Should save a png version of the plot? Default FALSE.}
 }
 \value{
@@ -15,7 +20,8 @@ Graph of the provinces with the most positive cases of COVID19 and saves a
 copy in png and gif format to the computer at the address defined in \code{setwd()}.
 }
 \description{
-This function creategraphs the provinces with the most positive cases of COVID19 in the DR.
+This function creategraphs the provinces with the most positive
+  cases of COVID19 in the DR.
 }
 \section{}{
 NA
@@ -24,4 +30,5 @@ NA
 \examples{
 g_case_provinces()
 g_case_provinces(savepng = TRUE)
+g_case_provinces(n_province = 25L, saveplot = TRUE)
 }

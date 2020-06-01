@@ -3,18 +3,19 @@
 #' @description This function graphs the total number negative and positive COVID19 cases
 #' in the Dominican Republic.
 #' @usage g_np()
+#' @param saveplot Logical. Should save the ggplot objet to the \code{.GlobalEnv}? Default FALSE.
 #' @param savepng Logical. Should save a png version of the plot? Default FALSE.
-
 #' @return Graph of the total number of negative and positives cases and saves a
 #' copy in png format to the computer at the address defined in \code{setwd()}.
 #' @export
 #' @importFrom scales comma
 #' @examples
 #' g_np()
+#' g_np(saveplot = FALSE, savepng = TRUE)
 #' @name g_np
 
-g_np <-
-  function(savepng = TRUE){
+g_np <- function(saveplot = FALSE,
+                 savepng = TRUE){
     if (exists('data_cum') == FALSE) {
       stop("data_cum is not present, run load_data_covid_dr()")
     }
@@ -92,7 +93,9 @@ g_np <-
   lab_np +
   t_legend
 
-assign('g_np', g_np, envir = .GlobalEnv)
+print(g_np)
+
+if(saveplot == TRUE)  {assign('g_np', g_np, envir = .GlobalEnv)}
 
 if (savepng == TRUE){
   ggsave(filename = "np.png",
@@ -102,6 +105,5 @@ if (savepng == TRUE){
          height = 10.466666666666667 / 1.5,
          units = "in")
 }
-return(print(.GlobalEnv$g_np))
 
 }

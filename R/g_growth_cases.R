@@ -2,6 +2,7 @@
 #' @aliases g_growth_cases
 #' @description This function graphs the growth rate of positive cases of COVID19 in DR.
 #' @usage g_growth_cases()
+#' @param saveplot Logical. Should save the ggplot objet to the \code{.GlobalEnv}? Default FALSE.
 #' @param savepng Logical. Should save a png version of the plot? Default FALSE.
 #' @return Graph of the growth rate of positive cases and save a
 #' copy in png format to the computer at the address defined in \code{setwd()}.
@@ -10,8 +11,8 @@
 #' g_growth_cases()
 #' @name g_growth_cases
 
-g_growth_cases <-
-  function(savepng = FALSE){
+g_growth_cases <- function(saveplot = FALSE,
+                           savepng = FALSE){
 
     if (exists('data_province') == FALSE) {
       stop("data_province is not present, run load_data_covid_dr()")
@@ -46,7 +47,7 @@ max_cp <-
   summarise(max_cp = max(CP, na.rm = TRUE)) %>%
   as.integer() %>%
   round(digits = -2) %>%
-  sum(10)
+  sum(5)
 
 g_dailygrowth <-
   df_crec_pos %>%
@@ -74,10 +75,14 @@ g_dailygrowth <-
                      limits = c(0,max_cp)) +
   lab_crec_pos +
   scale_x_date(date_labels = "%d %b",
-               date_breaks = "1 day") +
+               date_breaks = "3 days") +
   t6
 
+print(g_dailygrowth)
+
+if (saveplot == TRUE){
 assign('g_dailygrowth', g_dailygrowth, envir = .GlobalEnv)
+}
 
 if (savepng == TRUE) {
 
@@ -88,6 +93,5 @@ ggsave(filename = "dailygrowth.png",
        height = 10.466666666666667 / 1.5,
        units = "in")
 }
-return(print(.GlobalEnv$g_dailygrowth))
 
 }

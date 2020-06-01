@@ -7,6 +7,8 @@
 g_log_nc()
 }
 \arguments{
+\item{saveplot}{Logical. Should save the ggplot objet to the \code{.GlobalEnv}? Default FALSE.}
+
 \item{savepng}{Logical. Should save a png version of the plot? Default FALSE.}
 }
 \value{
@@ -19,4 +21,5 @@ in the Dominican Republic
 }
 \examples{
 g_log_nc()
+g_log_nc(saveplot = FALSE, savepng = FALSE)
 }

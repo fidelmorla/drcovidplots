@@ -9,7 +9,7 @@
 #' @examples
 #' load_themes()
 
-#' @name load_themes☺
+#' @name load_themes
 #'
 #'
 

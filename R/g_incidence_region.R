@@ -2,6 +2,7 @@
 #' @aliases g_incidence_region
 #' @description This function graphs the incidence and lethality by region of the COVID19 in the DR.
 #' @usage g_incidence_region()
+#' @param saveplot Logical. Should save the ggplot objet to the \code{.GlobalEnv}? Default FALSE.
 #' @param savepng Logical. Should save a png version of the plot? Default FALSE.
 #' @return Graph of incidence and case fatality by region and save a
 #' copy in png format to the computer at the address defined in \code{setwd()}.
@@ -9,10 +10,11 @@
 #' @export
 #' @examples
 #' g_incidence_region()
+#' g_incidence_region(saveplot = FALSE, savepng = FALSE)
 #' @name g_incidence_region
 
-g_incidence_region <-
-  function(savepng = FALSE){
+g_incidence_region <- function(saveplot = FALSE,
+                               savepng = FALSE){
 
     if (exists('data_province') == FALSE) {
       stop("data_province is not present, run load_data_covid_dr()")
@@ -105,7 +107,7 @@ g_inclet_reg <-
                  ncol = 2,
                  repeat.tick.labels = 'all', scales = "fixed")  +
   geom_text_repel(show.legend = FALSE,
-                  aes(size = 16,
+                  aes(size = 12,
                       label = case_when(Let > 10 ~ Province,
                                         Incidence > 100 ~ Province)),
                   hjust = 0.2,
@@ -123,7 +125,9 @@ g_inclet_reg <-
                                         linetype = "solid")
   )
 
-assign('g_inclet_reg', g_inclet_reg, envir = .GlobalEnv)
+print(g_inclet_reg)
+
+if (saveplot == TRUE) {assign('g_inclet_reg', g_inclet_reg, envir = .GlobalEnv)}
 
 if (savepng == TRUE) {
 
@@ -134,6 +138,5 @@ if (savepng == TRUE) {
          height = 10.466666666666667 / 1.5,
          units = "in")
 }
-return(print(.GlobalEnv$g_inclet_reg))
 
 }

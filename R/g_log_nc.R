@@ -2,18 +2,19 @@
 #' @aliases g_log_nc
 #' @description This function graphs the logarithm of both new cases and total cases
 #' in the Dominican Republic
+#' @param saveplot Logical. Should save the ggplot objet to the \code{.GlobalEnv}? Default FALSE.
 #' @param savepng Logical. Should save a png version of the plot? Default FALSE.
 #' @usage g_log_nc()
-
 #' @return Graph of the logarithm of of both new cases and total cases and save a
 #' copy in png format to the computer at the address defined in \code{setwd()}.
 #' @export
 #' @examples
 #' g_log_nc()
+#' g_log_nc(saveplot = FALSE, savepng = FALSE)
 #' @name g_log_nc
 
-g_log_nc <-
-  function(savepng = FALSE){
+g_log_nc <- function(saveplot = FALSE,
+                     savepng = FALSE){
     if (exists('data_cum') == FALSE) {
       stop("data_cum is not present, run load_data_covid_dr()")
     }
@@ -59,16 +60,17 @@ g_log_nc <-
                label = "We are winning \n when this number GOES DOWN!") +
       t6
 
+    print(g_nc)
 
-    assign('g_nc', g_nc, envir = .GlobalEnv)
- if (savepng == TRUE){
-    ggsave(filename = "log_cases.png",
-           plot = g_nc,
-           device = "png",
-           width = 18.333333333333332 / 1.5,
-           height = 10.466666666666667 / 1.5,
-           units = "in")
- }
-    return(print(.GlobalEnv$g_nc))
+    if (saveplot == TRUE) {assign('g_nc', g_nc, envir = .GlobalEnv)}
 
-  }
+    if (savepng == TRUE){
+      ggsave(filename = "log_cases.png",
+             plot = g_nc,
+             device = "png",
+             width = 18.333333333333332 / 1.5,
+             height = 10.466666666666667 / 1.5,
+             units = "in")
+    }
+
+}

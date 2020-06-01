@@ -5,6 +5,7 @@
 #' 2) Hospital isolation,
 #' 3) Recovered and
 #' 4) Deaths.
+#' @param saveplot Logical. Should save the ggplot objet to the \code{.GlobalEnv}? Default FALSE.
 #' @param savepng Logical. Should save a png version of the plot? Default FALSE.
 #' @importFrom scales comma
 #' @usage g_status()
@@ -15,8 +16,8 @@
 #' g_status()
 #' @name g_status
 
-g_status <-
-  function(savepng = FALSE){
+g_status <- function(saveplot = FALSE,
+                     savepng = FALSE){
     if (exists('data_province') == FALSE) {
       stop("data_province is not present, run load_data_covid_dr()")
     }
@@ -83,10 +84,11 @@ g_status <-
       theme(axis.text.x = element_text(angle = 0),
             axis.text.y = element_text(color = rev(col_type)))
 
-    assign("g_type", g_type, envir = .GlobalEnv)
+    print(g_type)
+
+    if (saveplot == TRUE) {assign("g_type", g_type, envir = .GlobalEnv)}
 
     if (savepng == TRUE){
-
       ggsave(filename = "status.png",
              plot = g_type,
              device = "png",
@@ -94,6 +96,5 @@ g_status <-
              height = 10.466666666666667 / 1.5,
              units = "in")
     }
-    return(print(.GlobalEnv$g_type))
 
   }

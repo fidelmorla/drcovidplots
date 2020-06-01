@@ -2,6 +2,7 @@
 #' @aliases g_positive
 #' @description This function graphs the percentage of positives with respect to the total number of tests.
 #' @usage g_positive
+#' @param saveplot Logical. Should save the ggplot objet to the \code{.GlobalEnv}? Default FALSE.
 #' @param savepng Logical. Should save a png version of the plot? Default FALSE.
 
 #' @return Graph of the percentage of positives with respect to the total number of tests and saves a
@@ -9,11 +10,12 @@
 #' @export
 #' @examples
 #' g_positive()
+#' g_positive(saveplot = FALSE, savepng = FALSE)
 #' @name g_positive
 
 
-g_positive <-
- function(savepng = FALSE){
+g_positive <- function(saveplot = FALSE,
+                       savepng = FALSE){
 
     if (exists('data_cum') == FALSE) {
       stop("data_cum is not present, run load_data_covid_dr()")
@@ -69,7 +71,9 @@ g_per_pos <-
                date_breaks = "1 day") +
   t_darkred
 
-assign('g_per_pos', g_per_pos, envir = .GlobalEnv)
+print(g_per_pos)
+
+if (saveplot == TRUE) {assign('g_per_pos', g_per_pos, envir = .GlobalEnv)}
 
 if (savepng == TRUE){
 
@@ -80,6 +84,5 @@ ggsave(filename = "per_pos.png",
        height = 10.466666666666667 / 1.5,
        units = "in")
 }
-return(print(.GlobalEnv$g_per_pos))
 
 }

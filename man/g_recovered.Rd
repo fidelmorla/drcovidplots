@@ -7,6 +7,8 @@
 g_recovered()
 }
 \arguments{
+\item{saveplot}{Logical. Should save the ggplot objet to the \code{.GlobalEnv}? Default FALSE.}
+
 \item{savepng}{Logical. Should save a png version of the plot? Default FALSE.}
 }
 \value{
@@ -18,4 +20,5 @@ This function graphs those recovered from COVID19 in the Dominican Republic.
 }
 \examples{
 g_recovered()
+g_recovered(saveplot = FALSE, savepng = FALSE)
 }
