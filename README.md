@@ -9,4 +9,6 @@ To install the latest development version of the package using the devtools pack
 
 ```
 devtools::install_github("fidelmorla/drcovidplots")
+
 ```
+
