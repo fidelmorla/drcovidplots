@@ -13,7 +13,6 @@ LazyData: true
 URL: https://github.com/fidelmorla/drcovidplots
 RoxygenNote: 7.1.0
 Imports:
-    googlesheets4,
     ggplot2,
     dplyr,
     tidyr,
