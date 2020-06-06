@@ -13,8 +13,9 @@ load_data_covid_dr <- function(){
   url_data_covid_dr <- paste0('https://github.com/fidelmorla/drcovidplots/',
                               'blob/master/excel_data/data_covid_dr.xlsx?raw=true')
 
-  download.file(url = url_data_covid_dr,
-                destfile = 'data_covid_dr.xlsx')
+  GET(url_data_covid_dr,
+      write_disk("data_covid_dr.xlsx",
+                 overwrite = TRUE))
 
   list_data <- list(
 
