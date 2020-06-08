@@ -3,3 +3,4 @@
 ^drcovidplots\.Rcheck$
 ^drcovidplots.*\.tar\.gz$
 ^drcovidplots.*\.tgz$
+^LICENSE\.md$
