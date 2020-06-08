@@ -6,7 +6,7 @@
 #' @param saveplot Logical. Should save the ggplot objet to the \code{.GlobalEnv}? Default FALSE.
 #' @param savepng Logical. Should save a png version of the plot? Default FALSE.
 #' @param n_province Integer. Number of provinces to show on plot. Range = [2,32].
-#'   Default n_province = 15L.
+#'   Default \code{n_province = 15L}.
 #' @return Graph of the provinces with the most positive cases of COVID19 and saves a
 #' copy in png and gif format to the computer at the address defined in \code{setwd()}.
 #' @importFrom scales comma
