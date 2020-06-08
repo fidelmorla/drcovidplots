@@ -9,7 +9,7 @@ Authors@R: c(person(given = "Fidel", family = "Morla, MA", role = c("aut", "cre"
 Description: This packages generates several plots using COVID-19 data from the Minister of Public Health and Social Assintance from Dominican Republic for COVID19.
 License: MIT + file LICENSE
 Encoding: UTF-8
-LazyData: true
+LazyData: false
 URL: https://github.com/fidelmorla/drcovidplots
 RoxygenNote: 7.1.0
 Imports:
