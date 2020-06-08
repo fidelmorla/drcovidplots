@@ -16,7 +16,7 @@
 #' g_case_provinces(savepng = TRUE)
 #' g_case_provinces(n_province = 25L, saveplot = TRUE)
 #' @name g_cases_province
-#' @section
+
 
 g_cases_province <- function(n_province = 15L,
                              saveplot = FALSE,

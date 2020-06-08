@@ -23,10 +23,6 @@ copy in png and gif format to the computer at the address defined in \code{setwd
 This function creategraphs the provinces with the most positive
   cases of COVID19 in the DR.
 }
-\section{}{
-NA
-}
-
 \examples{
 g_case_provinces()
 g_case_provinces(savepng = TRUE)
