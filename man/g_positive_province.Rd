@@ -4,7 +4,7 @@
 \alias{g_positive_province}
 \title{Positiveness by province from COVID19 in the Dominican Republic}
 \usage{
-g_positive_province()
+g_positive_province(saveplot = FALSE, savepng = FALSE)
 }
 \arguments{
 \item{saveplot}{Logical. Should save the ggplot objet to the \code{.GlobalEnv}? Default FALSE.}
@@ -21,5 +21,5 @@ from COVID19 in the Dominican Republic ordered by provinces.
 }
 \examples{
 g_positive_province()
-g_positive_province(saveplot = FALSE, savepng = FALSE)
+g_positive_province(saveplot = FALSE, savepng = TRUE)
 }

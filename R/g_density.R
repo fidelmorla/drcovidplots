@@ -4,13 +4,13 @@
 #' and population density of COVID19 in DR.
 #' @param saveplot Logical. Should save the ggplot objet to the \code{.GlobalEnv}? Default FALSE.
 #' @param savepng Logical. Should save a png version of the plot? Default FALSE.
-#' @usage g_density()
+#' @usage g_density(saveplot = FALSE, savepng = FALSE)
 #' @return Graph of daily and accumulated tests both in units and per million inhabitants
 #' and save a copy in png format on the computer to the address defined in \code{setwd()}.
 #' @importFrom scales comma
 #' @export
 #' @examples
-#' g_density()
+#' g_density(saveplot = FALSE, savepng = TRUE)
 #' @name g_density
 
 g_density <- function(saveplot = FALSE,

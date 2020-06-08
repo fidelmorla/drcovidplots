@@ -4,7 +4,7 @@
 \alias{g_tests}
 \title{COVID19 tests in the Dominican Republic}
 \usage{
-g_tests()
+g_tests(saveplot = FALSE, savepng = FALSE)
 }
 \arguments{
 \item{saveplot}{Logical. Should save the ggplot objet to the \code{.GlobalEnv}? Default FALSE.}
@@ -20,5 +20,5 @@ This function graphs the COVID19 tests in RD.
 }
 \examples{
 g_tests()
-g_tests(saveplot = FALSE, savepng = FALSE)
+g_tests(saveplot = FALSE, savepng = TRUE)
 }

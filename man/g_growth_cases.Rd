@@ -4,7 +4,7 @@
 \alias{g_growth_cases}
 \title{Growth rate of positive cases of COVID19}
 \usage{
-g_growth_cases()
+g_growth_cases(saveplot = FALSE, savepng = FALSE)
 }
 \arguments{
 \item{saveplot}{Logical. Should save the ggplot objet to the \code{.GlobalEnv}? Default FALSE.}
@@ -19,5 +19,5 @@ copy in png format to the computer at the address defined in \code{setwd()}.
 This function graphs the growth rate of positive cases of COVID19 in DR.
 }
 \examples{
-g_growth_cases()
+g_growth_cases(saveplot = TRUE, savepng = FALSE)
 }

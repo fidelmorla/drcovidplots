@@ -2,7 +2,7 @@
 #' @aliases g_recovered_daily
 #' @description This function graphs the daily number of persons recovered from COVID19
 #' in the Dominican Republic.
-#' @usage g_recovered_daily()
+#' @usage g_recovered_daily(saveplot = FALSE, savepng = FALSE)
 #' @param saveplot Logical. Should save the ggplot objet to the \code{.GlobalEnv}? Default FALSE.
 #' @param savepng Logical. Should save a png version of the plot? Default FALSE.
 
@@ -12,7 +12,7 @@
 #' @importFrom scales comma
 #' @examples
 #' g_recovered_daily()
-#' g_recovered_daily(saveplot = FALSE, savepng = FALSE)
+#' g_recovered_daily(saveplot = FALSE, savepng = TRUE)
 #' @name g_recovered_daily
 
 g_recovered_daily <- function(saveplot = FALSE,

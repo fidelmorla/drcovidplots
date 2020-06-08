@@ -4,7 +4,7 @@
 \alias{g_recovered_province}
 \title{Recovered by province from COVID19 in the Dominican Republic}
 \usage{
-g_recovered_province()
+g_recovered_province(saveplot = FALSE, savepng = FALSE)
 }
 \arguments{
 \item{saveplot}{Logical. Should save the ggplot objet to the \code{.GlobalEnv}? Default FALSE.}
@@ -19,5 +19,5 @@ copy in png format to the computer at the address defined in \code{setwd()}.
 This function graphs those recovered from COVID19 in the Dominican Republic ordered by provinces.
 }
 \examples{
-g_recovered_province()
+g_recovered_province(saveplot = FALSE, savepng = TRUE)
 }

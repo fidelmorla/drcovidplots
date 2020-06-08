@@ -4,13 +4,13 @@
 #' in the Dominican Republic
 #' @param saveplot Logical. Should save the ggplot objet to the \code{.GlobalEnv}? Default FALSE.
 #' @param savepng Logical. Should save a png version of the plot? Default FALSE.
-#' @usage g_log_nc()
+#' @usage g_log_nc(saveplot = FALSE, savepng = FALSE)
 #' @return Graph of the logarithm of of both new cases and total cases and save a
 #' copy in png format to the computer at the address defined in \code{setwd()}.
 #' @export
 #' @examples
 #' g_log_nc()
-#' g_log_nc(saveplot = FALSE, savepng = FALSE)
+#' g_log_nc(saveplot = FALSE, savepng = TRUE)
 #' @name g_log_nc
 
 g_log_nc <- function(saveplot = FALSE,

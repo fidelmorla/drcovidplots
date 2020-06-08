@@ -4,7 +4,7 @@
 \alias{g_np}
 \title{Negative and positive cases of COVID19}
 \usage{
-g_np()
+g_np(saveplot = FALSE, savepng = FALSE)
 }
 \arguments{
 \item{saveplot}{Logical. Should save the ggplot objet to the \code{.GlobalEnv}? Default FALSE.}

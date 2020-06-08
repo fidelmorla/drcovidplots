@@ -4,7 +4,7 @@
 \alias{g_evolution_covid}
 \title{Evolution of new cases and total cases of COVID19}
 \usage{
-g_evolution_covid()
+g_evolution_covid(saveplot = FALSE, savepng = FALSE)
 }
 \arguments{
 \item{saveplot}{Logical. Should save the ggplot objet to the \code{.GlobalEnv}? Default FALSE.}

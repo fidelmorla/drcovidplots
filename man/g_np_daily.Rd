@@ -4,7 +4,7 @@
 \alias{g_np_daily}
 \title{Daily negative and positive cases of COVID19.}
 \usage{
-g_np_daily()
+g_np_daily(saveplot = FALSE, savepng = FALSE)
 }
 \arguments{
 \item{saveplot}{Logical. Should save the ggplot objet to the \code{.GlobalEnv}? Default FALSE.}
@@ -21,5 +21,5 @@ in the Dominican Republic.
 }
 \examples{
 g_np_daily()
-g_np_daily(saveplot = FALSE, savepng = FALSE)
+g_np_daily(saveplot = FALSE, savepng = TRUE)
 }

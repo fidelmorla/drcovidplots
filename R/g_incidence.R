@@ -1,7 +1,7 @@
 #' @title Incidence of COVID19
 #' @aliases g_incidence
 #' @description This function graphs the incidence of COVID19 in DR.
-#' @usage g_incidence()
+#' @usage g_incidence(saveplot = FALSE, savepng = FALSE)
 #' @param saveplot Logical. Should save the ggplot objet to the \code{.GlobalEnv}? Default FALSE.
 #' @param savepng Logical. Should save a png version of the plot? Default FALSE.
 #' @importFrom scales comma
@@ -10,7 +10,7 @@
 #' @export
 #' @examples
 #' g_incidence()
-#' g_incidence(saveplot = FALSE, savepng = FALSE)
+#' g_incidence(saveplot = TRUE, savepng = FALSE)
 #' @name g_incidence
 
 

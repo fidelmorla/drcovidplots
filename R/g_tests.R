@@ -1,7 +1,7 @@
 #' @title COVID19 tests in the Dominican Republic
 #' @aliases g_tests
 #' @description This function graphs the COVID19 tests in RD.
-#' @usage g_tests()
+#' @usage g_tests(saveplot = FALSE, savepng = FALSE)
 #' @param saveplot Logical. Should save the ggplot objet to the \code{.GlobalEnv}? Default FALSE.
 #' @param savepng Logical. Should save a png version of the plot? Default FALSE.
 #' @importFrom scales comma
@@ -10,7 +10,7 @@
 #' @export
 #' @examples
 #' g_tests()
-#' g_tests(saveplot = FALSE, savepng = FALSE)
+#' g_tests(saveplot = FALSE, savepng = TRUE)
 #' @name g_tests
 
 

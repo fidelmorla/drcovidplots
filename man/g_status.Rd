@@ -4,7 +4,7 @@
 \alias{g_status}
 \title{Distribution by status of affected individuals of COVID19 in the Dominican Republic}
 \usage{
-g_status()
+g_status(saveplot = FALSE, savepng = FALSE)
 }
 \arguments{
 \item{saveplot}{Logical. Should save the ggplot objet to the \code{.GlobalEnv}? Default FALSE.}

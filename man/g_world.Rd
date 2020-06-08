@@ -4,7 +4,7 @@
 \alias{g_world}
 \title{Comparison of the COVID19 situation in the Dominican Republic and the world.}
 \usage{
-g_world()
+g_world(savepng = FALSE)
 }
 \arguments{
 \item{savepng}{Logical. Should save a png version of the plot? Default FALSE.}

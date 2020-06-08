@@ -2,7 +2,7 @@
 #' @aliases g_np
 #' @description This function graphs the total number negative and positive COVID19 cases
 #' in the Dominican Republic.
-#' @usage g_np()
+#' @usage g_np(saveplot = FALSE, savepng = FALSE)
 #' @param saveplot Logical. Should save the ggplot objet to the \code{.GlobalEnv}? Default FALSE.
 #' @param savepng Logical. Should save a png version of the plot? Default FALSE.
 #' @return Graph of the total number of negative and positives cases and saves a

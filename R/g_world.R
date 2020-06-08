@@ -4,7 +4,7 @@
 #' in the Dominican Republic and the world.
 #' @param savepng Logical. Should save a png version of the plot? Default FALSE.
 
-#' @usage g_world()
+#' @usage g_world(savepng = FALSE)
 #' @return The following scatter graphics are saved in png format on the computer
 #' in the address defined in \code{setwd()}:
 #' 1. Lethality against deaths (World and LA)

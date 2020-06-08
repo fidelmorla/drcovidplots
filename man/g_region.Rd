@@ -4,7 +4,7 @@
 \alias{g_region}
 \title{COVID19 cases by region}
 \usage{
-g_region()
+g_region(saveplot = FALSE, savepng = FALSE)
 }
 \arguments{
 \item{saveplot}{Logical. Should save the ggplot objet to the \code{.GlobalEnv}? Default FALSE.}
@@ -19,5 +19,5 @@ copy in png format to the computer at the address defined in \code{setwd()}.
 This function graphs the positive cases of COVID19 by region in the DR.
 }
 \examples{
-g_region()
+g_region(saveplot = FALSE, savepng = TRUE)
 }

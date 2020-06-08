@@ -1,7 +1,7 @@
 #' @title Recovered by province from COVID19 in the Dominican Republic
 #' @aliases g_recovered_province
 #' @description This function graphs those recovered from COVID19 in the Dominican Republic ordered by provinces.
-#' @usage g_recovered_province()
+#' @usage g_recovered_province(saveplot = FALSE, savepng = FALSE)
 #' @param saveplot Logical. Should save the ggplot objet to the \code{.GlobalEnv}? Default FALSE.
 #' @param savepng Logical. Should save a png version of the plot? Default FALSE.
 
@@ -10,7 +10,7 @@
 #' @export
 #' @importFrom scales comma
 #' @examples
-#' g_recovered_province()
+#' g_recovered_province(saveplot = FALSE, savepng = TRUE)
 #' @name g_recovered_province
 
 

@@ -4,7 +4,7 @@
 \alias{g_hospital}
 \title{People in hospital isolation for COVID19}
 \usage{
-g_hospital()
+g_hospital(saveplot = FALSE, savepng = FALSE)
 }
 \arguments{
 \item{saveplot}{Logical. Should save the ggplot objet to the \code{.GlobalEnv}? Default FALSE.}
@@ -19,5 +19,5 @@ at the address defined in \code{setwd()}.
 This function graphs the people in hospital isolation of the positive cases of COVID19 in the DR.
 }
 \examples{
-g_hospital()
+g_hospital(saveplot = FALSE, savepng = TRUE)
 }

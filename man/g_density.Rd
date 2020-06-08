@@ -4,7 +4,7 @@
 \alias{g_density}
 \title{Correlation between COVID19 cases and population density}
 \usage{
-g_density()
+g_density(saveplot = FALSE, savepng = FALSE)
 }
 \arguments{
 \item{saveplot}{Logical. Should save the ggplot objet to the \code{.GlobalEnv}? Default FALSE.}
@@ -20,5 +20,5 @@ This function graphs the correlation between cases of COVID19
 and population density of COVID19 in DR.
 }
 \examples{
-g_density()
+g_density(saveplot = FALSE, savepng = TRUE)
 }

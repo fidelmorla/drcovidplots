@@ -2,7 +2,7 @@
 #' @aliases g_l2
 #' @description This function graphs the L2 of the COVID19 in RD. L2 = 100 * Deaths / (Deaths + Recovered),
 #' as recommended by Ghani \emph{et al.} (2005) for the Dominican Republic
-#' @usage g_l2()
+#' @usage g_l2(saveplot = FALSE, savepng = FALSE)
 #' @param saveplot Logical. Should save the ggplot objet to the \code{.GlobalEnv}? Default FALSE.
 #' @param savepng Logical. Should save a png version of the plot? Default FALSE.
 #' @return Graphic of L2 of COVID19 and save a
@@ -15,7 +15,7 @@
 #' @export
 #' @examples
 #' g_l2()
-#' g_l2(saveplot = FALSE, savepng = FALSE)
+#' g_l2(saveplot = TRUE, savepng = FALSE)
 #' @name g_l2
 
 g_l2 <- function(saveplot = FALSE,

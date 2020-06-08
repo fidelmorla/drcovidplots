@@ -5,7 +5,7 @@
 \alias{g_case_province}
 \title{Provinces with most positive cases of COVID19}
 \usage{
-g_case_province()
+g_case_province(n_province = 15L, saveplot = TRUE, savepng = FALSE)
 }
 \arguments{
 \item{n_province}{Integer. Number of provinces to show on plot. Range = [2,32].
