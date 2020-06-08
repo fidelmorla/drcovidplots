@@ -1,7 +1,7 @@
 #' @title Incidence and lethality rate by region of COVID19
 #' @aliases g_incidence_region
 #' @description This function graphs the incidence and lethality by region of the COVID19 in the DR.
-#' @usage g_incidence_region()
+#' @usage g_incidence_region(saveplot = FALSE, savepng = FALSE)
 #' @param saveplot Logical. Should save the ggplot objet to the \code{.GlobalEnv}? Default FALSE.
 #' @param savepng Logical. Should save a png version of the plot? Default FALSE.
 #' @return Graph of incidence and case fatality by region and save a
@@ -10,7 +10,7 @@
 #' @export
 #' @examples
 #' g_incidence_region()
-#' g_incidence_region(saveplot = FALSE, savepng = FALSE)
+#' g_incidence_region(saveplot = FALSE, savepng = TRUE)
 #' @name g_incidence_region
 
 g_incidence_region <- function(saveplot = FALSE,

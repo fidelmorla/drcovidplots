@@ -1,7 +1,7 @@
 #' @title People in hospital isolation for COVID19
 #' @aliases g_hospital
 #' @description This function graphs the people in hospital isolation of the positive cases of COVID19 in the DR.
-#' @usage g_hospital()
+#' @usage g_hospital(saveplot = FALSE, savepng = FALSE)
 #' @param saveplot Logical. Should save the ggplot objet to the \code{.GlobalEnv}? Default FALSE.
 #' @param savepng Logical. Should save a png version of the plot? Default FALSE.
 #' @return Chart of isolated individuals in hospitals and save a copy in png format on the computer
@@ -9,7 +9,7 @@
 #' @export
 #' @importFrom scales comma
 #' @examples
-#' g_hospital()
+#' g_hospital(saveplot = FALSE, savepng = TRUE)
 #' @name g_hospital
 
 g_hospital <- function(saveplot = FALSE,

@@ -1,14 +1,14 @@
 #' @title Growth rate of positive cases of COVID19
 #' @aliases g_growth_cases
 #' @description This function graphs the growth rate of positive cases of COVID19 in DR.
-#' @usage g_growth_cases()
+#' @usage g_growth_cases(saveplot = FALSE, savepng = FALSE)
 #' @param saveplot Logical. Should save the ggplot objet to the \code{.GlobalEnv}? Default FALSE.
 #' @param savepng Logical. Should save a png version of the plot? Default FALSE.
 #' @return Graph of the growth rate of positive cases and save a
 #' copy in png format to the computer at the address defined in \code{setwd()}.
 #' @export
 #' @examples
-#' g_growth_cases()
+#' g_growth_cases(saveplot = TRUE, savepng = FALSE)
 #' @name g_growth_cases
 
 g_growth_cases <- function(saveplot = FALSE,

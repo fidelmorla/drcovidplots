@@ -2,14 +2,14 @@
 #' @aliases g_recovered_growth
 #' @description This function graphs the growth rate of those recovered from COVID19
 #' in the Dominican Republic.
-#' @usage g_recovered_growth()
+#' @usage g_recovered_growth(saveplot = FALSE, savepng = FALSE)
 #' @param savepng Logical. Should save a png version of the plot? Default FALSE.
 
 #' @return Graph of the recovered persons growth rate and saves a
 #' copy in png format to the computer at the address defined in \code{setwd()}.
 #' @export
 #' @examples
-#' g_recovered_growth()
+#' g_recovered_growth(saveplot = FALSE, savepng = TRUE)
 #' @name g_recovered_growth
 
 

@@ -2,7 +2,7 @@
 #' @aliases g_np_daily
 #' @description This function graphs the daily total number negative and positive COVID19 cases
 #' in the Dominican Republic.
-#' @usage g_np_daily()
+#' @usage g_np_daily(saveplot = FALSE, savepng = FALSE)
 #' @param saveplot Logical. Should save the ggplot objet to the \code{.GlobalEnv}? Default FALSE.
 #' @param savepng Logical. Should save a png version of the plot? Default FALSE.
 
@@ -11,7 +11,7 @@
 #' @export
 #' @examples
 #' g_np_daily()
-#' g_np_daily(saveplot = FALSE, savepng = FALSE)
+#' g_np_daily(saveplot = FALSE, savepng = TRUE)
 #' @name g_np_daily
 
 
