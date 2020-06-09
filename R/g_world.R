@@ -4,7 +4,7 @@
 #' in the Dominican Republic and the world.
 #' @param savepng Logical. Should save a png version of the plot? Default FALSE.
 
-#' @usage g_world(savepng = FALSE)
+#' @usage g_world(saveplot = FALSE, savepng = FALSE)
 #' @return The following scatter graphics are saved in png format on the computer
 #' in the address defined in \code{setwd()}:
 #' 1. Lethality against deaths (World and LA)
@@ -14,11 +14,12 @@
 #' 5. Positives and recovery rate (World and LA)
 #' @export
 #' @examples
-#' g_world()
+#' g_world(saveplot = TRUE, savepng = TRUE)
 #' @name g_world
 
 
-g_world <- function(savepng = FALSE) {
+g_world <- function(saveplot = FALSE,
+                    savepng = FALSE) {
 
   if (exists('t3') == FALSE) {
     stop("Themes are not present, run load_themes()")
@@ -187,7 +188,7 @@ g_la <-
   t6 +
   theme(axis.text.x = element_text(angle = 0))
 
-assign('g_la', g_la, envir = .GlobalEnv)
+if (saveplot == TRUE) {assign('g_la', g_la, envir = .GlobalEnv)}
 
 if (savepng == TRUE){
 
@@ -248,7 +249,7 @@ g_let_per <-
   t6 +
   theme(axis.text.x = element_text(angle = 0))
 
-assign('g_let_per', g_let_per, envir = .GlobalEnv)
+if (saveplot == TRUE) {assign('g_let_per', g_let_per, envir = .GlobalEnv)}
 
 if (savepng == TRUE){
 
@@ -365,7 +366,7 @@ g_la_letg <-
   t6 +
   theme(axis.text.x = element_text(angle = 0))
 
-assign('g_la_letg', g_la_letg, envir = .GlobalEnv)
+if (saveplot == TRUE) {assign('g_la_letg', g_la_letg, envir = .GlobalEnv)}
 
 if (savepng == TRUE){
 
@@ -477,7 +478,7 @@ g_la_pos_r <-
   t6 +
   theme(axis.text.x = element_text(angle = 0))
 
-assign('g_la_pos_r', g_la_pos_r, envir = .GlobalEnv)
+if (saveplot == TRUE) {assign('g_la_pos_r', g_la_pos_r, envir = .GlobalEnv)}
 
 if (savepng == TRUE){
 
