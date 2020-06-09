@@ -35,7 +35,7 @@ load_data_covid_dr <- function(){
     data_province =
       read.csv(url_data_province,
                sep = ",")  %>%
-      mutate(date = mdy(date)),
+      mutate(date = ymd(date)),
 
     data_type =
       read.csv(url_data_type,
