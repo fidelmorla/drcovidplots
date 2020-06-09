@@ -1,6 +1,6 @@
 library(easypackages)
 packages("gganimate", "magrittr", "tidyverse", "lemon",
-         "readxl", "ggalt", "ggthemes", "zoo", "gridExtra", "viridis",
+         "readr", "ggalt", "ggthemes", "zoo", "gridExtra", "viridis",
          "lubridate", "gifski", "png", "scales", "colorspace",
          "grid", "ggrepel", 'ggsci', 'plotly', 'XML', 'rvest', 'xml2', "forcats", 'gifski',
          'grDevices', 'devtools', 'roxygen2', 'httr',
