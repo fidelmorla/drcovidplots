@@ -81,7 +81,7 @@ g_active_cases <- function(saveplot = FALSE,
   if (saveplot == TRUE) {assign('g_ac', g_ac, envir = .GlobalEnv)}
 
   if (savepng == TRUE) {
-    ggsave(filename = "hospital.png",
+    ggsave(filename = "active.png",
            plot = g_ac,
            device = "png",
            width = 18.333333333333332 / 1.5,
