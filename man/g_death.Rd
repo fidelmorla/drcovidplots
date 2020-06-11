@@ -4,7 +4,7 @@
 \alias{g_death}
 \title{Total number of deaths}
 \usage{
-g_death()
+g_death(saveplot = FALSE, savepng = FALSE)
 }
 \arguments{
 \item{saveplot}{Logical. Should save the ggplot objet to the \code{.GlobalEnv}? Default FALSE.}

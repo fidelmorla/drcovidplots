@@ -10,35 +10,44 @@
 
 load_data_covid_dr <- function(){
 
-  url_data_covid_dr <- paste0('https://github.com/fidelmorla/drcovidplots/',
-                              'blob/master/excel_data/data_covid_dr.xlsx?raw=true')
+  url_data_cum <- paste0('https://raw.githubusercontent.com/fidelmorla/',
+                         'drcovidplots/master/csv_data/data_cum.csv')
 
-  download.file(url = url_data_covid_dr,
-                destfile = 'data_covid_dr.xlsx')
+  url_data_density <- paste0('https://raw.githubusercontent.com/fidelmorla/',
+                         'drcovidplots/master/csv_data/data_density.csv')
+
+  url_data_province <- paste0('https://raw.githubusercontent.com/fidelmorla/',
+                             'drcovidplots/master/csv_data/data_province.csv')
+
+  url_data_type <- paste0('https://raw.githubusercontent.com/fidelmorla/',
+                              'drcovidplots/master/csv_data/data_type.csv')
+
+  url_data_sex <- paste0('https://raw.githubusercontent.com/fidelmorla/',
+                          'drcovidplots/master/csv_data/data_sex.csv')
 
   list_data <- list(
 
     data_cum =
-      read_excel('data_covid_dr.xlsx',
-                 sheet = "nc")  %>%
+      read.csv(url_data_cum,
+               sep = ",") %>%
       mutate(date = ymd(date)),
 
     data_province =
-      read_excel('data_covid_dr.xlsx',
-                 sheet = "c")  %>%
-      mutate(date = mdy(date)),
+      read.csv(url_data_province,
+               sep = ",")  %>%
+      mutate(date = ymd(date)),
 
     data_type =
-      read_excel('data_covid_dr.xlsx',
-                 sheet = "type"),
+      read.csv(url_data_type,
+               sep = ","),
 
     data_sex =
-      read_excel('data_covid_dr.xlsx',
-                 sheet = "sex"),
+      read.csv(url_data_sex,
+               sep = ","),
 
     data_density =
-      read_excel('data_covid_dr.xlsx',
-                 sheet = "den"),
+      read.csv(url_data_density,
+               sep = ","),
 
     Metropolitan = c( 'SD',
                       'DN'),

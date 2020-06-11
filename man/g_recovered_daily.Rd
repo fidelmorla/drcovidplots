@@ -4,7 +4,7 @@
 \alias{g_recovered_daily}
 \title{Daily number of persons recovered from COVID19}
 \usage{
-g_recovered_daily()
+g_recovered_daily(saveplot = FALSE, savepng = FALSE)
 }
 \arguments{
 \item{saveplot}{Logical. Should save the ggplot objet to the \code{.GlobalEnv}? Default FALSE.}
@@ -21,5 +21,5 @@ in the Dominican Republic.
 }
 \examples{
 g_recovered_daily()
-g_recovered_daily(saveplot = FALSE, savepng = FALSE)
+g_recovered_daily(saveplot = FALSE, savepng = TRUE)
 }

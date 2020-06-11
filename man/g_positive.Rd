@@ -4,7 +4,7 @@
 \alias{g_positive}
 \title{COVID19 positivity}
 \usage{
-g_positive
+g_positive(saveplot = FALSE, savepng = FALSE)
 }
 \arguments{
 \item{saveplot}{Logical. Should save the ggplot objet to the \code{.GlobalEnv}? Default FALSE.}
@@ -20,5 +20,5 @@ This function graphs the percentage of positives with respect to the total numbe
 }
 \examples{
 g_positive()
-g_positive(saveplot = FALSE, savepng = FALSE)
+g_positive(saveplot = FALSE, savepng = TRUE)
 }

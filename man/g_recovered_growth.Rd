@@ -4,7 +4,7 @@
 \alias{g_recovered_growth}
 \title{Recovered growth rate from COVID19}
 \usage{
-g_recovered_growth()
+g_recovered_growth(saveplot = FALSE, savepng = FALSE)
 }
 \arguments{
 \item{savepng}{Logical. Should save a png version of the plot? Default FALSE.}
@@ -18,5 +18,5 @@ This function graphs the growth rate of those recovered from COVID19
 in the Dominican Republic.
 }
 \examples{
-g_recovered_growth()
+g_recovered_growth(saveplot = FALSE, savepng = TRUE)
 }

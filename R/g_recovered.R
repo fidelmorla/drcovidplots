@@ -1,7 +1,7 @@
 #' @title Recovered from COVID19
 #' @aliases g_recovered
 #' @description This function graphs those recovered from COVID19 in the Dominican Republic.
-#' @usage g_recovered()
+#' @usage g_recovered(saveplot = FALSE, savepng = FALSE)
 #' @param saveplot Logical. Should save the ggplot objet to the \code{.GlobalEnv}? Default FALSE.
 #' @param savepng Logical. Should save a png version of the plot? Default FALSE.
 #' @return Graph of the recovered persons and saves a
@@ -10,7 +10,7 @@
 #' @export
 #' @examples
 #' g_recovered()
-#' g_recovered(saveplot = FALSE, savepng = FALSE)
+#' g_recovered(saveplot = TRUE, savepng = FALSE)
 #' @name g_recovered
 
 g_recovered <- function(saveplot = FALSE,

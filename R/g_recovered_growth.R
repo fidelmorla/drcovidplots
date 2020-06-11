@@ -2,18 +2,19 @@
 #' @aliases g_recovered_growth
 #' @description This function graphs the growth rate of those recovered from COVID19
 #' in the Dominican Republic.
-#' @usage g_recovered_growth()
+#' @usage g_recovered_growth(saveplot = FALSE, savepng = FALSE)
 #' @param savepng Logical. Should save a png version of the plot? Default FALSE.
 
 #' @return Graph of the recovered persons growth rate and saves a
 #' copy in png format to the computer at the address defined in \code{setwd()}.
 #' @export
 #' @examples
-#' g_recovered_growth()
+#' g_recovered_growth(saveplot = FALSE, savepng = TRUE)
 #' @name g_recovered_growth
 
 
-g_recovered_growth <- function(savepng = FALSE){
+g_recovered_growth <- function(saveplot = FALSE,
+                               savepng = FALSE){
 
 if (exists('data_province') == FALSE) {
   stop("data_province is not present, run load_data_covid_dr()")
@@ -70,8 +71,7 @@ g_rec_growth <-
   lab_rec_growth +
   t_darkgreen
 
-assign('g_rec_growth', g_rec_growth, envir = .GlobalEnv)
-
+if (saveplot == TRUE) {assign('g_rec_growth', g_rec_growth, envir = .GlobalEnv)}
 
 if (savepng == TRUE){
 
@@ -82,7 +82,5 @@ if (savepng == TRUE){
          height = 10.466666666666667 / 1.5,
          units = "in")
 }
-
-return(print(.GlobalEnv$g_rec_growth))
 
 }

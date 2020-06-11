@@ -5,14 +5,14 @@
 #' @param saveplot Logical. Should save the ggplot objet to the \code{.GlobalEnv}? Default FALSE.
 #' @param savepng Logical. Should save a png version of the plot? Default FALSE.
 
-#' @usage g_sex()
+#' @usage g_sex(saveplot = FALSE, savepng = FALSE)
 #' @return Graph of the distribution according to sex of the positives and saves a
 #' copy in png format to the computer at the address defined in \code{setwd()}.
 #' @export
 #' @importFrom scales comma
 #' @examples
 #' g_sex()
-#' g_sex(saveplot = FALSE, savepng = FALSE)
+#' g_sex(saveplot = FALSE, savepng = TRUE)
 #' @name g_sex
 
 g_sex <- function(saveplot = FALSE,

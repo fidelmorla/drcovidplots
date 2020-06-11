@@ -4,7 +4,7 @@
 \alias{g_log_nc}
 \title{New cases vs total cases in logarithms of COVID19}
 \usage{
-g_log_nc()
+g_log_nc(saveplot = FALSE, savepng = FALSE)
 }
 \arguments{
 \item{saveplot}{Logical. Should save the ggplot objet to the \code{.GlobalEnv}? Default FALSE.}
@@ -21,5 +21,5 @@ in the Dominican Republic
 }
 \examples{
 g_log_nc()
-g_log_nc(saveplot = FALSE, savepng = FALSE)
+g_log_nc(saveplot = FALSE, savepng = TRUE)
 }

@@ -2,14 +2,13 @@
 % Please edit documentation in R/g_cases_province.R
 \name{g_cases_province}
 \alias{g_cases_province}
-\alias{g_case_province}
 \title{Provinces with most positive cases of COVID19}
 \usage{
-g_case_province()
+g_cases_province(n_province = 15L, saveplot = FALSE, savepng = FALSE)
 }
 \arguments{
 \item{n_province}{Integer. Number of provinces to show on plot. Range = [2,32].
-Default n_province = 15L.}
+Default \code{n_province = 15L}.}
 
 \item{saveplot}{Logical. Should save the ggplot objet to the \code{.GlobalEnv}? Default FALSE.}
 
@@ -23,12 +22,8 @@ copy in png and gif format to the computer at the address defined in \code{setwd
 This function creategraphs the provinces with the most positive
   cases of COVID19 in the DR.
 }
-\section{}{
-NA
-}
-
 \examples{
-g_case_provinces()
-g_case_provinces(savepng = TRUE)
-g_case_provinces(n_province = 25L, saveplot = TRUE)
+g_cases_province()
+g_cases_province(savepng = TRUE)
+g_cases_province(n_province = 25L, saveplot = TRUE)
 }

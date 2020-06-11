@@ -2,7 +2,7 @@
 #' @aliases g_positive_region
 #' @description This function graphs the positive ratio (Positive cases / Tests)
 #' from COVID19 in the Dominican Republic ordered by provinces.
-#' @usage g_positive_region()
+#' @usage g_positive_region(saveplot = FALSE, savepng = FALSE)
 #' @param saveplot Logical. Should save the ggplot objet to the \code{.GlobalEnv}? Default FALSE.
 #' @param savepng Logical. Should save a png version of the plot? Default FALSE.
 #' @return Graph of the the positive ratio by region and saves a
@@ -11,7 +11,7 @@
 #' @importFrom scales comma
 #' @examples
 #' g_positive_region()
-#' g_positive_region(saveplot = FALSE, savepng = FALSE)
+#' g_positive_region(saveplot = TRUE, savepng = FALSE)
 #' @name g_positive_region
 
 g_positive_region <- function(saveplot = FALSE,

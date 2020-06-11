@@ -4,7 +4,7 @@
 \alias{g_sex}
 \title{Distribution by sex of COVID19 positives in the Dominican Republic}
 \usage{
-g_sex()
+g_sex(saveplot = FALSE, savepng = FALSE)
 }
 \arguments{
 \item{saveplot}{Logical. Should save the ggplot objet to the \code{.GlobalEnv}? Default FALSE.}
@@ -20,5 +20,5 @@ This function graphs the distribution according to the sex of the positives.
 }
 \examples{
 g_sex()
-g_sex(saveplot = FALSE, savepng = FALSE)
+g_sex(saveplot = FALSE, savepng = TRUE)
 }

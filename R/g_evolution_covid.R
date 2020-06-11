@@ -1,7 +1,7 @@
 #' @title Evolution of new cases and total cases of COVID19
 #' @aliases g_evolution_covid
 #' @description This function generates a gif with the evolution of the new cases and total cases of COVID19 in DR.
-#' @usage g_evolution_covid()
+#' @usage g_evolution_covid(saveplot = FALSE, savepng = FALSE)
 #' @param saveplot Logical. Should save the ggplot objet to the \code{.GlobalEnv}? Default FALSE.
 #' @param savepng Logical. Should save a png version of the plot? Default FALSE.
 #' @return GIF with the evolution of the new cases and total cases and save a

@@ -1,7 +1,7 @@
 #' @title COVID19 positivity
 #' @aliases g_positive
 #' @description This function graphs the percentage of positives with respect to the total number of tests.
-#' @usage g_positive
+#' @usage g_positive(saveplot = FALSE, savepng = FALSE)
 #' @param saveplot Logical. Should save the ggplot objet to the \code{.GlobalEnv}? Default FALSE.
 #' @param savepng Logical. Should save a png version of the plot? Default FALSE.
 
@@ -10,7 +10,7 @@
 #' @export
 #' @examples
 #' g_positive()
-#' g_positive(saveplot = FALSE, savepng = FALSE)
+#' g_positive(saveplot = FALSE, savepng = TRUE)
 #' @name g_positive
 
 
