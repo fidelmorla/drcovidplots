@@ -35,3 +35,5 @@ Imports:
     ggrepel,
     lemon
 BugReports: https://github.com/fidelmorla/drcovidplots/issues
+Depends: 
+    R (>= 2.10)
