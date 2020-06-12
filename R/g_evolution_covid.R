@@ -17,19 +17,10 @@ g_evolution_covid <- function(saveplot = FALSE,
                               savepng = FALSE){
 
     if (exists('data_province') == FALSE) {
-      stop("data_province is not present, run load_data_covid_dr()")
+      stop("data objects are missing, run load_data_covid_dr()")
     }
 
-    if (exists('data_cum') == FALSE) {
-      stop("data_cum is not present, run load_data_covid_dr()")
-    }
-
-    if (exists('t3') == FALSE) {
-      stop("Themes are not present, run load_themes()")
-    }
-
-
-    df_cov <-
+   df_cov <-
       data_cum %>%
       select(date, Positive, New_positive) %>%
       gather(key = "covid", value = "N", -date) %>%
@@ -84,7 +75,7 @@ g_evolution_covid <- function(saveplot = FALSE,
       scale_y_continuous(labels = scales::comma) +
       transition_reveal(date)  +
       coord_cartesian(clip = 'off') +
-      t6
+      list_themes['t6']
 
     g_cov <- animate(g_cov,
             width = 1100/1.5,

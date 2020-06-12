@@ -18,19 +18,10 @@ g_recovered_province <- function(saveplot = FALSE,
                                  savepng = FALSE){
 
     if (exists('data_province') == FALSE) {
-      stop("data_province is not present, run load_data_covid_dr()")
+      stop("data objects are missing, run load_data_covid_dr()")
     }
 
-    if (exists('data_cum') == FALSE) {
-      stop("data_cum is not present, run load_data_covid_dr()")
-    }
-  if (exists('t3') == FALSE) {
-    stop("Themes are not present, run load_themes()")
-  }
-
-
-
-# Tasa de recuperaci?n ----------------------------------------------------
+  # Tasa de recuperaci?n ----------------------------------------------------
 
 df_rec_prov <-
   data_province  %>%
@@ -113,7 +104,7 @@ g_rec_prov <-
   coord_flip() +
   lab_rec_prov +
   theme_clean() +
-  t6 +
+  list_themes['t6'] +
   theme(axis.text.x = element_text(angle = 0),
         axis.text.y = element_text(color = rev(heatcol_rec)))
 

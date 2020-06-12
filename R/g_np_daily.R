@@ -18,14 +18,7 @@
 g_np_daily <- function(saveplot = FALSE,
                        savepng = FALSE){
     if (exists('data_province') == FALSE) {
-      stop("data_province is not present, run load_data_covid_dr()")
-    }
-
-    if (exists('data_cum') == FALSE) {
-      stop("data_cum is not present, run load_data_covid_dr()")
-    }
-    if (exists('t3') == FALSE) {
-      stop("Themes are not present, run load_themes()")
+      stop("data objects are missing, run load_data_covid_dr()")
     }
 
 
@@ -102,7 +95,7 @@ g_np_daily <-
                      limits = c(0,
                                 max_daily_total_tests)) +
   lab_np_daily +
-  t_legend
+  list_themes['t_legend']
 
 print(g_np_daily)
 

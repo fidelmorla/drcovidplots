@@ -16,10 +16,7 @@
 g_log_nc <- function(saveplot = FALSE,
                      savepng = FALSE){
     if (exists('data_cum') == FALSE) {
-      stop("data_cum is not present, run load_data_covid_dr()")
-    }
-    if (exists('t3') == FALSE) {
-      stop("Themes are not present, run load_themes()")
+      stop("data objects are missing, run load_data_covid_dr()")
     }
 
     df_nc <-
@@ -58,7 +55,7 @@ g_log_nc <- function(saveplot = FALSE,
                x = min(df_nc$lpos) * 1.10,
                colour = "darkred",
                label = "We are winning \n when this number GOES DOWN!") +
-      t6
+      list_themes['t6']
 
     print(g_nc)
 

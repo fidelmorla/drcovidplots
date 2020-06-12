@@ -17,13 +17,8 @@
 g_np <- function(saveplot = FALSE,
                  savepng = TRUE){
     if (exists('data_cum') == FALSE) {
-      stop("data_cum is not present, run load_data_covid_dr()")
+      stop("data objects are missing, run load_data_covid_dr()")
     }
-
-    if (exists('t3') == FALSE) {
-      stop("Themes are not present, run load_themes()")
-    }
-
 
 df_np <-
   data_cum  %>%
@@ -91,7 +86,7 @@ g_np <-
                      breaks = c(seq(0,max_total_tests,max_total_tests / 4)),
                      limits = c(0,max_total_tests)) +
   lab_np +
-  t_legend
+  list_themes['t_legend']
 
 print(g_np)
 

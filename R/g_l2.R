@@ -21,11 +21,7 @@
 g_l2 <- function(saveplot = FALSE,
                  savepng = FALSE){
     if (exists('data_cum') == FALSE) {
-      stop("data_cum is not present, run load_data_covid_dr()")
-    }
-
-    if (exists('t3') == FALSE) {
-      stop("Themes are not present, run load_themes()")
+      stop("data objects are missing, run load_data_covid_dr()")
     }
 
 # Tasa de letalidad Ghani et al. 2005 -------------------------------------
@@ -66,7 +62,7 @@ g_l2 <-
   scale_fill_manual(values = c("#0981bd", '#0981bd')) +
   scale_color_manual(values = c("#0981bd", '#0981bd')) +
   theme_clean() +
-  t6 +
+  list_themes['t6'] +
   lab_l2
 
 print(g_l2)

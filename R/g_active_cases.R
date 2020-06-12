@@ -16,12 +16,8 @@ g_active_cases <- function(saveplot = FALSE,
                        savepng = FALSE){
 
   if (exists('data_cum') == FALSE) {
-    stop("data_cum is not present, run load_data_covid_dr()")
+    stop("data objects are missing, run load_data_covid_dr()")
   }
-  if (exists('t3') == FALSE) {
-    stop("Themes are not present, run load_themes()")
-  }
-
 
   df_ac <-
     data_cum  %>%
@@ -74,7 +70,7 @@ g_active_cases <- function(saveplot = FALSE,
     scale_fill_manual(values = c("royalblue", 'royalblue')) +
     scale_color_manual(values = c("royalblue", 'royalblue')) +
     lab_ac +
-    t6
+    list_themes['t6']
 
   print(g_ac)
 

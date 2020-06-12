@@ -21,10 +21,6 @@
 g_world <- function(saveplot = FALSE,
                     savepng = FALSE) {
 
-  if (exists('t3') == FALSE) {
-    stop("Themes are not present, run load_themes()")
-  }
-
 
 world <- c('Dominican Republic',
            'Italy',

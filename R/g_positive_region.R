@@ -18,14 +18,7 @@ g_positive_region <- function(saveplot = FALSE,
                                 savepng = FALSE){
 
   if (exists('data_province') == FALSE) {
-    stop("data_province is not present, run load_data_covid_dr()")
-  }
-
-  if (exists('data_cum') == FALSE) {
-    stop("data_cum is not present, run load_data_covid_dr()")
-  }
-  if (exists('t3') == FALSE) {
-    stop("Themes are not present, run load_themes()")
+    stop("data objects are missing, run load_data_covid_dr()")
   }
 
   df_pos_reg <-
@@ -97,7 +90,7 @@ g_pos_reg <-
     scale_fill_manual(values = heatcol_pos_reg) +
     scale_color_manual(values = heatcol_pos_reg) +
     lab_pos_reg +
-    t6 +
+    list_themes['t6'] +
     theme(axis.text.x = element_text(angle = 0),
           axis.text.y = element_text(color = rev(heatcol_pos_reg)))
 
