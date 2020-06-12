@@ -9,3 +9,4 @@ libs
 g_world.R
 themes.R
 \themes
+\man\load_themes.Rd
