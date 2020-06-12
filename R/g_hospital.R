@@ -71,7 +71,7 @@ g_h <-
   scale_fill_manual(values = c("white", 'white')) +
   scale_color_manual(values = c("white", 'white')) +
   lab_h +
-  list_themes['t_darkorange']
+  drcovidplots::list_themes['t_darkorange']
 
 print(g_h)
 

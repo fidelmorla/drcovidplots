@@ -61,7 +61,7 @@ g_rec_growth <-
   scale_fill_manual(values = c("white", 'white')) +
   scale_color_manual(values = c("white", 'white')) +
   lab_rec_growth +
-  list_themes['t_darkgreen']
+  drcovidplots::list_themes['t_darkgreen']
 
 if (saveplot == TRUE) {assign('g_rec_growth', g_rec_growth, envir = .GlobalEnv)}
 

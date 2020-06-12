@@ -70,7 +70,7 @@ g_active_cases <- function(saveplot = FALSE,
     scale_fill_manual(values = c("royalblue", 'royalblue')) +
     scale_color_manual(values = c("royalblue", 'royalblue')) +
     lab_ac +
-    list_themes['t6']
+    drcovidplots::list_themes['t6']
 
   print(g_ac)
 

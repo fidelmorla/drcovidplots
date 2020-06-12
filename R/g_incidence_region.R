@@ -105,7 +105,7 @@ g_inclet_reg <-
                   hjust = 0.2,
                   vjust = 1.2  ) +
   lab_inclet_reg +
-  list_themes['t6'] +
+  drcovidplots::list_themes['t6'] +
   theme(axis.text.x = element_text(angle = 0),
         strip.text.x = element_text(color = "white",
                                     face = "bold.italic"),

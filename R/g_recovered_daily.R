@@ -62,7 +62,7 @@ g_rec_d <-
   scale_fill_manual(values = c("white", 'white')) +
   scale_color_manual(values = c("white", 'white')) +
   lab_rec_d +
-  list_themes['t_darkgreen']
+  drcovidplots::list_themes['t_darkgreen']
 
 print(g_rec_d)
 

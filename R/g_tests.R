@@ -117,7 +117,7 @@ g_tests <- function(saveplot = FALSE,
       scale_fill_manual(values = c("white", 'white')) +
       scale_color_manual(values = c("white", 'white')) +
       lab_tests +
-      list_themes['t_darkblue']
+      drcovidplots::list_themes['t_darkblue']
 
     g_tests_m <-
       df_tests %>%
@@ -140,7 +140,7 @@ g_tests <- function(saveplot = FALSE,
       scale_fill_manual(values = c("white", 'white')) +
       scale_color_manual(values = c("white", 'white')) +
       lab_tests_m +
-      list_themes['t_darkblue']
+      drcovidplots::list_themes['t_darkblue']
 
     g_tests_cum <-
       df_tests %>%
@@ -161,7 +161,7 @@ g_tests <- function(saveplot = FALSE,
       scale_fill_manual(values = c("white", 'white')) +
       scale_color_manual(values = c("white", 'white')) +
       lab_tests_cum +
-      list_themes['t_darkblue']
+      drcovidplots::list_themes['t_darkblue']
 
     g_tests_cum_m <-
       df_tests %>%
@@ -182,7 +182,7 @@ g_tests <- function(saveplot = FALSE,
       scale_fill_manual(values = c("white", 'white')) +
       scale_color_manual(values = c("white", 'white')) +
       lab_tests_cum_m +
-      list_themes['t_darkblue']
+      drcovidplots::list_themes['t_darkblue']
 
     if (saveplot == TRUE){
 

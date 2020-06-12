@@ -83,7 +83,7 @@ g_positive_province <- function(saveplot = FALSE,
     scale_color_manual(values = heatcol_pos) +
     coord_flip() +
     lab_pos_prov +
-    list_theme['t6'] +
+    drcovidplots::list_theme['t6'] +
     theme(axis.text.x = element_text(angle = 0),
           axis.title.x = element_text(angle = 0),
           axis.text.y = element_text(color = rev(heatcol_pos)))

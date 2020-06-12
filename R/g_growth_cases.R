@@ -67,7 +67,7 @@ g_dailygrowth <-
   lab_crec_pos +
   scale_x_date(date_labels = "%d %b",
                date_breaks = "3 days") +
-  list_themes['t6']
+  drcovidplots::list_themes['t6']
 
 print(g_dailygrowth)
 

@@ -75,7 +75,7 @@ g_evolution_covid <- function(saveplot = FALSE,
       scale_y_continuous(labels = scales::comma) +
       transition_reveal(date)  +
       coord_cartesian(clip = 'off') +
-      list_themes['t6']
+      drcovidplots::list_themes['t6']
 
     g_cov <- animate(g_cov,
             width = 1100/1.5,

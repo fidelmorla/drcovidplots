@@ -95,7 +95,7 @@ g_np_daily <-
                      limits = c(0,
                                 max_daily_total_tests)) +
   lab_np_daily +
-  list_themes['t_legend']
+  drcovidplots::list_themes['t_legend']
 
 print(g_np_daily)
 

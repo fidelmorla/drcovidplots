@@ -62,7 +62,7 @@ g_l2 <-
   scale_fill_manual(values = c("#0981bd", '#0981bd')) +
   scale_color_manual(values = c("#0981bd", '#0981bd')) +
   theme_clean() +
-  list_themes['t6'] +
+  drcovidplots::list_themes['t6'] +
   lab_l2
 
 print(g_l2)

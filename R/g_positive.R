@@ -65,7 +65,7 @@ g_per_pos <-
   lab_per_pos +
   scale_x_date(date_labels = "%d %b",
                date_breaks = "1 day") +
-  list_themes['t_darkred']
+  drcovidplots::list_themes['t_darkred']
 
 print(g_per_pos)
 

@@ -68,7 +68,7 @@ g_status <- function(saveplot = FALSE,
       scale_fill_manual(values = col_type) +
       scale_color_manual(values = col_type) +
       lab_type +
-      list_themes['t6'] +
+      drcovidplots::list_themes['t6'] +
       theme(axis.text.x = element_text(angle = 0),
             axis.text.y = element_text(color = rev(col_type)))
 

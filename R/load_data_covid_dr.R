@@ -115,7 +115,5 @@ load_data_covid_dr <- function(){
 
   }
 
-  data("list_themes")
-
 }
 

@@ -55,7 +55,7 @@ g_log_nc <- function(saveplot = FALSE,
                x = min(df_nc$lpos) * 1.10,
                colour = "darkred",
                label = "We are winning \n when this number GOES DOWN!") +
-      list_themes['t6']
+      drcovidplots::list_themes['t6']
 
     print(g_nc)
 

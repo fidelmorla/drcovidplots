@@ -86,7 +86,7 @@ g_np <-
                      breaks = c(seq(0,max_total_tests,max_total_tests / 4)),
                      limits = c(0,max_total_tests)) +
   lab_np +
-  list_themes['t_legend']
+  drcovidplots::list_themes['t_legend']
 
 print(g_np)
 

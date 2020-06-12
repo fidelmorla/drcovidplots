@@ -104,7 +104,7 @@ g_rec_prov <-
   coord_flip() +
   lab_rec_prov +
   theme_clean() +
-  list_themes['t6'] +
+  drcovidplots::list_themes['t6'] +
   theme(axis.text.x = element_text(angle = 0),
         axis.text.y = element_text(color = rev(heatcol_rec)))
 
