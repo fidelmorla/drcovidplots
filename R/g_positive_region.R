@@ -18,14 +18,7 @@ g_positive_region <- function(saveplot = FALSE,
                                 savepng = FALSE){
 
   if (exists('data_province') == FALSE) {
-    stop("data_province is not present, run load_data_covid_dr()")
-  }
-
-  if (exists('data_cum') == FALSE) {
-    stop("data_cum is not present, run load_data_covid_dr()")
-  }
-  if (exists('t3') == FALSE) {
-    stop("Themes are not present, run load_themes()")
+    stop("data objects are missing, run load_data_covid_dr()")
   }
 
   df_pos_reg <-
@@ -85,21 +78,21 @@ g_pos_reg <-
              y = Pos,
              fill = reorder(Reg, -rank),
              col = reorder(Reg, -rank))) +
-    geom_col() +
-    scale_y_continuous(breaks = c(seq(0,max_pos_reg, max_pos_reg / 4)),
-                       limits = c(0,max_pos_reg)) +
-    geom_text(check_overlap = TRUE,
-              size = 4.5,
-              hjust = -0.25,
-              show.legend = FALSE,
-              aes(label = sprintf("%.2f", Pos))) +
-    coord_flip() +
-    scale_fill_manual(values = heatcol_pos_reg) +
-    scale_color_manual(values = heatcol_pos_reg) +
-    lab_pos_reg +
-    t6 +
-    theme(axis.text.x = element_text(angle = 0),
-          axis.text.y = element_text(color = rev(heatcol_pos_reg)))
+  geom_col() +
+  scale_y_continuous(breaks = c(seq(0,max_pos_reg, max_pos_reg / 4)),
+                     limits = c(0,max_pos_reg)) +
+  geom_text(check_overlap = TRUE,
+            size = 4.5,
+            hjust = -0.25,
+            show.legend = FALSE,
+            aes(label = sprintf("%.2f", Pos))) +
+  coord_flip() +
+  scale_fill_manual(values = heatcol_pos_reg) +
+  scale_color_manual(values = heatcol_pos_reg) +
+  lab_pos_reg +
+  drcovidplots::list_themes['t6'] +
+  theme(axis.text.x = element_text(angle = 0),
+        axis.text.y = element_text(color = rev(heatcol_pos_reg)))
 
   print(g_pos_reg)
 

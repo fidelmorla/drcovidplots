@@ -115,6 +115,5 @@ load_data_covid_dr <- function(){
 
   }
 
-
 }
 

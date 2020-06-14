@@ -15,17 +15,8 @@ g_growth_cases <- function(saveplot = FALSE,
                            savepng = FALSE){
 
     if (exists('data_province') == FALSE) {
-      stop("data_province is not present, run load_data_covid_dr()")
+      stop("data objects are missing, run load_data_covid_dr()")
     }
-
-    if (exists('data_cum') == FALSE) {
-      stop("data_cum is not present, run load_data_covid_dr()")
-    }
-    if (exists('t3') == FALSE) {
-      stop("Themes are not present, run load_themes()")
-    }
-
-
 
 df_crec_pos <-
   data_cum  %>%
@@ -76,7 +67,7 @@ g_dailygrowth <-
   lab_crec_pos +
   scale_x_date(date_labels = "%d %b",
                date_breaks = "3 days") +
-  t6
+  drcovidplots::list_themes['t6']
 
 print(g_dailygrowth)
 

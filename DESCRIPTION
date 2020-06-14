@@ -1,7 +1,7 @@
 Package: drcovidplots
 Type: Package
 Title: Plots for COVID19 data from Dominican Republic 
-Version: 0.1.8
+Version: 0.1.9
 Authors@R: c(person(given = "Fidel", family = "Morla, MA", role = c("aut", "cre"),
                      email = "fidel.morla@gmail.com"),
              person(given = "Johan", family = "Rosa", role = c("aut", "rev"),
@@ -35,3 +35,5 @@ Imports:
     ggrepel,
     lemon
 BugReports: https://github.com/fidelmorla/drcovidplots/issues
+Depends: 
+    R (>= 2.10)

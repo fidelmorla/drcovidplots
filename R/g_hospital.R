@@ -16,12 +16,8 @@ g_hospital <- function(saveplot = FALSE,
                        savepng = FALSE){
 
     if (exists('data_cum') == FALSE) {
-      stop("data_cum is not present, run load_data_covid_dr()")
+      stop("data objects are missing, run load_data_covid_dr()")
     }
-  if (exists('t3') == FALSE) {
-    stop("Themes are not present, run load_themes()")
-  }
-
 
 df_h <-
   data_cum  %>%
@@ -75,7 +71,7 @@ g_h <-
   scale_fill_manual(values = c("white", 'white')) +
   scale_color_manual(values = c("white", 'white')) +
   lab_h +
-  t_darkorange
+  drcovidplots::list_themes['t_darkorange']
 
 print(g_h)
 

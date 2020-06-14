@@ -18,12 +18,8 @@ g_positive <- function(saveplot = FALSE,
                        savepng = FALSE){
 
     if (exists('data_cum') == FALSE) {
-      stop("data_cum is not present, run load_data_covid_dr()")
+      stop("data objects are missing, run load_data_covid_dr()")
     }
-    if (exists('t3') == FALSE) {
-      stop("Themes are not present, run load_themes()")
-    }
-
 
 # Linea porcentaje de positivos -------------------------------------------
 
@@ -69,7 +65,7 @@ g_per_pos <-
   lab_per_pos +
   scale_x_date(date_labels = "%d %b",
                date_breaks = "1 day") +
-  t_darkred
+  drcovidplots::list_themes['t_darkred']
 
 print(g_per_pos)
 

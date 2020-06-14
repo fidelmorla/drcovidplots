@@ -17,18 +17,10 @@ g_recovered <- function(saveplot = FALSE,
                         savepng = FALSE){
 
   if (exists('data_province') == FALSE) {
-    stop("data_province is not present, run load_data_covid_dr()")
+    stop("data objects are missing, run load_data_covid_dr()")
   }
 
-  if (exists('data_cum') == FALSE) {
-    stop("data_cum is not present, run load_data_covid_dr()")
-  }
-  if (exists('t3') == FALSE) {
-    stop("Themes are not present, run load_themes()")
-  }
-
-
-# Recovered -------------------------------------------------------------
+ # Recovered -------------------------------------------------------------
 
 df_rec <-
   data_cum  %>%
@@ -68,7 +60,7 @@ g_rec <-
   scale_fill_manual(values = c("white", 'white')) +
   scale_color_manual(values = c("white", 'white')) +
   lab_rec +
-  t_darkgreen
+  drcovidplots::list_themes['t_darkgreen']
 
 print(g_rec)
 

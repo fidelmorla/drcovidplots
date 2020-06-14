@@ -16,16 +16,10 @@
 
 g_incidence <- function(saveplot = FALSE,
                         savepng = FALSE){
-    if (exists('data_province') == FALSE) {
-      stop("data_province is not present, run load_data_covid_dr()")
-    }
 
-    if (exists('data_cum') == FALSE) {
-      stop("data_cum is not present, run load_data_covid_dr()")
-    }
-    if (exists('t3') == FALSE) {
-      stop("Themes are not present, run load_themes()")
-    }
+      if (exists('data_province') == FALSE) {
+        stop("data objects are missing, run load_data_covid_dr()")
+      }
 
 
 df_inc <-
@@ -101,7 +95,7 @@ g_inc <-
                      limits = c(-5,max_inc)) +
   coord_flip() +
   lab_inc +
-  t6 +
+  drcovidplots::list_themes['t6'] +
   theme(axis.text.x = element_text(angle = 0),
         axis.text.y = element_text(color = rev(heatcol_inc)))
 

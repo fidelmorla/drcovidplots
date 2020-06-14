@@ -17,16 +17,8 @@ g_recovered_growth <- function(saveplot = FALSE,
                                savepng = FALSE){
 
 if (exists('data_province') == FALSE) {
-  stop("data_province is not present, run load_data_covid_dr()")
+  stop("data objects are missing, run load_data_covid_dr()")
 }
-
-if (exists('data_cum') == FALSE) {
-  stop("data_cum is not present, run load_data_covid_dr()")
-}
-if (exists('t3') == FALSE) {
-  stop("Themes are not present, run load_themes()")
-}
-
 
 # Recovered -------------------------------------------------------------
 
@@ -69,7 +61,7 @@ g_rec_growth <-
   scale_fill_manual(values = c("white", 'white')) +
   scale_color_manual(values = c("white", 'white')) +
   lab_rec_growth +
-  t_darkgreen
+  drcovidplots::list_themes['t_darkgreen']
 
 if (saveplot == TRUE) {assign('g_rec_growth', g_rec_growth, envir = .GlobalEnv)}
 

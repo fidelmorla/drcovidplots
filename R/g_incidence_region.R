@@ -17,15 +17,7 @@ g_incidence_region <- function(saveplot = FALSE,
                                savepng = FALSE){
 
     if (exists('data_province') == FALSE) {
-      stop("data_province is not present, run load_data_covid_dr()")
-    }
-
-    if (exists('data_cum') == FALSE) {
-      stop("data_cum is not present, run load_data_covid_dr()")
-    }
-
-    if (exists('t3') == FALSE) {
-      stop("Themes are not present, run load_themes()")
+      stop("data objects are missing, run load_data_covid_dr()")
     }
 
 df_inc <-
@@ -113,7 +105,7 @@ g_inclet_reg <-
                   hjust = 0.2,
                   vjust = 1.2  ) +
   lab_inclet_reg +
-  t6 +
+  drcovidplots::list_themes['t6'] +
   theme(axis.text.x = element_text(angle = 0),
         strip.text.x = element_text(color = "white",
                                     face = "bold.italic"),
