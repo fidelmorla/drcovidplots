@@ -33,7 +33,8 @@ Imports:
     gifski,
     colorspace,
     ggrepel,
-    lemon
+    lemon,
+    sf
 BugReports: https://github.com/fidelmorla/drcovidplots/issues
 Depends: 
     R (>= 2.10)
