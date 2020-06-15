@@ -71,12 +71,10 @@ max_prov_s <-
 
 #Colores para el graph-
 heatcol_s <- sequential_hcl(n = n_province,
-                            palette = "YlOrRd",
-                            power = 0.5,
-                            l = 30,
-                            c = 225,
-                            c1 = 150
-)
+                            palette = "Blues",
+                            power = 0.7,
+                            l = 40,
+                            c = 100)
 
 lab_prov_s <-
   labs(title = paste0('DR: Top-',
