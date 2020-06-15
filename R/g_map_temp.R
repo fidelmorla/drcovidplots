@@ -1,4 +1,23 @@
-
+#' @title Dominican map with COVID-19 cases by province
+#' @aliases g_map_covid
+#' @description This function creategraphs the provinces with the most positive
+#'   cases of COVID19 in the DR.
+#' @usage g_map_covid(date = "latest", interactive = FALSE, variable = "Cases")
+#' @param date
+#' @param interactive
+#' @param variable
+#' @param saveplot Logical. Should save the ggplot objet to the \code{.GlobalEnv}? Default FALSE.
+#' @param savepng Logical. Should save a png version of the plot? Default FALSE.
+#'
+#' @return Graph the Dominican map with COVID-19 cases by province and saves a
+#' copy in png format to the computer at the address defined in \code{setwd()}.
+#' @importFrom scales comma
+#' @export
+#' @examples
+#' g_map_covid()
+#' g_map_covid(savepng = TRUE)
+#' g_cases_province(n_province = 25L, saveplot = TRUE)
+#' @name g_cases_province
 
 g_map_covid <- function(date = "latest", interactive = FALSE, variable = "Cases") {
 
