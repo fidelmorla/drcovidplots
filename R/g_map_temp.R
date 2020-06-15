@@ -29,9 +29,6 @@ g_map_covid <- function(date = "latest", interactive = FALSE, variable = "Cases"
 
   `%>%` <- magrittr::`%>%`
 
-  load("data/map_provincias.RData")
-
-
   if(date == "latest") {
     data <- data_province %>%
       dplyr::filter(date == max(date))
@@ -59,7 +56,7 @@ g_map_covid <- function(date = "latest", interactive = FALSE, variable = "Cases"
 
   if(interactive == FALSE) {
 
-  map_covid <- dplyr::left_join(map_provincias, data, by = c("province_short" = "Province")) %>%
+  map_covid <- dplyr::left_join(drcovdplots::map_provincias, data, by = c("province_short" = "Province")) %>%
     select(var_toplot = variable, dplyr::everything()) %>%
     mutate(
       CENTROID = purrr::map(geometry, sf::st_centroid),
