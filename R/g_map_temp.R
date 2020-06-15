@@ -1,7 +1,5 @@
 
 
-
-
 p_map_covid <- function(date = "latest", interactive = FALSE, variable = "Cases") {
 
   if (exists('data_cum') == FALSE) {
@@ -23,6 +21,23 @@ p_map_covid <- function(date = "latest", interactive = FALSE, variable = "Cases"
       dplyr::filter(date == date2)
   }
 
+  if (variable == "Cases") {
+    scale_fill <- ggplot2::scale_fill_continuous(
+      labels = scales::comma,
+      guide = ggplot2::guide_colorbar(barwidth = 15)
+    )
+  } else if (variable == "Deaths") {
+    scale_fill <- ggplot2::scale_fill_viridis_c(
+      option = "inferno",
+      labels = scales::comma,
+      guide = ggplot2::guide_colorbar(barwidth = 15))
+  } else if (variable == "Recovered") {
+    scale_fill <- ggplot2::scale_fill_viridis_c(
+      labels = scales::comma,
+      direction = -1,
+      guide = ggplot2::guide_colorbar(barwidth = 15))
+  }
+
   if(interactive == FALSE) {
 
   map_covid <- dplyr::left_join(map_provincias, data, by = c("province_short" = "Province")) %>%
@@ -37,22 +52,19 @@ p_map_covid <- function(date = "latest", interactive = FALSE, variable = "Cases"
     ggplot2::ggplot() +
     ggplot2::geom_sf(ggplot2::aes(fill = var_toplot)) +
     ggplot2::theme_void() +
-    ggplot2::scale_fill_continuous(
-     labels = scales::comma,
-     guide = ggplot2::guide_colorbar(barwidth = 15)
-    ) +
     ggplot2::theme(
       legend.position = c(0.5, 0.2),
       legend.direction = "horizontal"
     ) +
     ggplot2::labs(fill = variable) +
     ggrepel::geom_label_repel(ggplot2::aes(COORDS_X, COORDS_Y, label = label_short),
-                              size = 3, min.segment.length = 0, point.padding = NA)
+                              size = 3, min.segment.length = 0, point.padding = NA) +
+    scale_fill
   }
 
   return(map_covid)
-
 }
+
 
 
 
