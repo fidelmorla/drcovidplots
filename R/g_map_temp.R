@@ -1,6 +1,6 @@
 #' @title Dominican map with COVID-19 cases by province
 #' @aliases g_map_covid
-#' @description This function creategraphs the provinces with the most positive
+#' @description This function graphs the provinces with the most positive
 #'   cases of COVID19 in the DR.
 #' @usage g_map_covid(date = "latest", interactive = FALSE, variable = "Cases")
 #' @param date
@@ -16,8 +16,8 @@
 #' @examples
 #' g_map_covid()
 #' g_map_covid(savepng = TRUE)
-#' g_cases_province(n_province = 25L, saveplot = TRUE)
-#' @name g_cases_province
+#' g_map_covid(date = "latest", variable = "Deaths")
+#' @name g_map_covid
 
 g_map_covid <- function(date = "latest", interactive = FALSE, variable = "Cases") {
 
