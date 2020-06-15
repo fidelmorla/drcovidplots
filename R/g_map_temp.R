@@ -1,9 +1,9 @@
 
 
-p_map_covid <- function(date = "latest", interactive = FALSE, variable = "Cases") {
+g_map_covid <- function(date = "latest", interactive = FALSE, variable = "Cases") {
 
   if (exists('data_cum') == FALSE) {
-    stop("data_cum is not present, run load_data_covid_dr()")
+    stop("data objects are missing, run load_data_covid_dr()")
   }
 
   date2 <- date
