@@ -19,7 +19,7 @@ Graph of the provinces with the most positive cases of COVID19 and saves a
 copy in png and gif format to the computer at the address defined in \code{setwd()}.
 }
 \description{
-This function creategraphs the provinces with the most positive
+This function graphs the provinces with the most positive
   cases of COVID19 in the DR.
 }
 \examples{

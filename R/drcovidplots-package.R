@@ -36,8 +36,7 @@
 #'
 #'
 #' @section Warning:
-#' For all functions to work, you MUST run first, in order, \code{load_data_covid_dr()}
-#' and \code{load_themes()}
+#' For all functions to work, you MUST run first \code{load_data_covid_dr()}.
 
 
 NULL

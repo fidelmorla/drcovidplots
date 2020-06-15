@@ -1,6 +1,6 @@
 #' @title Provinces with most positive cases of COVID19
 #' @aliases g_cases_province
-#' @description This function creategraphs the provinces with the most positive
+#' @description This function graphs the provinces with the most positive
 #'   cases of COVID19 in the DR.
 #' @usage g_cases_province(n_province = 15L, saveplot = FALSE, savepng = FALSE)
 #' @param saveplot Logical. Should save the ggplot objet to the \code{.GlobalEnv}? Default FALSE.
