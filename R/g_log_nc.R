@@ -2,8 +2,8 @@
 #' @aliases g_log_nc
 #' @description This function graphs the logarithm of both new cases and total cases
 #' in the Dominican Republic
-#' @param saveplot Logical. Should save the ggplot objet to the \code{.GlobalEnv}? Default FALSE.
-#' @param savepng Logical. Should save a png version of the plot? Default FALSE.
+#' @param saveplot Logical. Should save the ggplot objet to the \code{.GlobalEnv}? Default \code{FALSE}.
+#' @param savepng Logical. Should save a png version of the plot? Default \code{FALSE}.
 #' @usage g_log_nc(saveplot = FALSE, savepng = FALSE)
 #' @return Graph of the logarithm of of both new cases and total cases and save a
 #' copy in png format to the computer at the address defined in \code{setwd()}.

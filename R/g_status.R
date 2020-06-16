@@ -5,8 +5,8 @@
 #' 2) Hospital isolation,
 #' 3) Recovered and
 #' 4) Deaths.
-#' @param saveplot Logical. Should save the ggplot objet to the \code{.GlobalEnv}? Default FALSE.
-#' @param savepng Logical. Should save a png version of the plot? Default FALSE.
+#' @param saveplot Logical. Should save the ggplot objet to the \code{.GlobalEnv}? Default \code{FALSE}.
+#' @param savepng Logical. Should save a png version of the plot? Default \code{FALSE}.
 #' @importFrom scales comma
 #' @usage g_status(saveplot = FALSE, savepng = FALSE)
 #' @return Graph of the distribution according to the status of affected individuals and saves a

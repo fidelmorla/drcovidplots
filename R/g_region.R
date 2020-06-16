@@ -2,8 +2,8 @@
 #' @aliases g_region
 #' @description This function graphs the positive cases of COVID19 by region in the DR.
 #' @usage g_region(saveplot = FALSE, savepng = FALSE)
-#' @param saveplot Logical. Should save the ggplot objet to the \code{.GlobalEnv}? Default FALSE.
-#' @param savepng Logical. Should save a png version of the plot? Default FALSE.
+#' @param saveplot Logical. Should save the ggplot objet to the \code{.GlobalEnv}? Default \code{FALSE}.
+#' @param savepng Logical. Should save a png version of the plot? Default \code{FALSE}.
 
 #' @return Graph of positive cases of COVID19 by region and save a
 #' copy in png format to the computer at the address defined in \code{setwd()}.

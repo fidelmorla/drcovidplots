@@ -2,8 +2,8 @@
 #' @aliases g_incidence_region
 #' @description This function graphs the incidence and lethality by region of the COVID19 in the DR.
 #' @usage g_incidence_region(saveplot = FALSE, savepng = FALSE)
-#' @param saveplot Logical. Should save the ggplot objet to the \code{.GlobalEnv}? Default FALSE.
-#' @param savepng Logical. Should save a png version of the plot? Default FALSE.
+#' @param saveplot Logical. Should save the ggplot objet to the \code{.GlobalEnv}? Default \code{FALSE}.
+#' @param savepng Logical. Should save a png version of the plot? Default \code{FALSE}.
 #' @return Graph of incidence and case fatality by region and save a
 #' copy in png format to the computer at the address defined in \code{setwd()}.
 #' @importFrom scales comma

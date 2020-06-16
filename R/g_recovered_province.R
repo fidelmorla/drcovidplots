@@ -2,8 +2,8 @@
 #' @aliases g_recovered_province
 #' @description This function graphs those recovered from COVID19 in the Dominican Republic ordered by provinces.
 #' @usage g_recovered_province(saveplot = FALSE, savepng = FALSE)
-#' @param saveplot Logical. Should save the ggplot objet to the \code{.GlobalEnv}? Default FALSE.
-#' @param savepng Logical. Should save a png version of the plot? Default FALSE.
+#' @param saveplot Logical. Should save the ggplot objet to the \code{.GlobalEnv}? Default \code{FALSE}.
+#' @param savepng Logical. Should save a png version of the plot? Default \code{FALSE}.
 
 #' @return Graph of the recovered persons ordered by provinces and saves a
 #' copy in png format to the computer at the address defined in \code{setwd()}.

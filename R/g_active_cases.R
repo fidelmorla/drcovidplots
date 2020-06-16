@@ -2,8 +2,8 @@
 #' @aliases g_active_cases
 #' @description This function graphs the actives cases cases of COVID19 in the DR.
 #' @usage g_active_cases(saveplot = FALSE, savepng = FALSE)
-#' @param saveplot Logical. Should save the ggplot objet to the \code{.GlobalEnv}? Default FALSE.
-#' @param savepng Logical. Should save a png version of the plot? Default FALSE.
+#' @param saveplot Logical. Should save the ggplot objet to the \code{.GlobalEnv}? Default \code{FALSE}.
+#' @param savepng Logical. Should save a png version of the plot? Default \code{FALSE}.
 #' @return Chart of COVID19 active cases and save a copy in png format on the computer
 #' at the address defined in \code{setwd()}.
 #' @export

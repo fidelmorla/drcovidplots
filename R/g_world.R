@@ -2,7 +2,7 @@
 #' @aliases g_world
 #' @description This function displays various charts comparing the COVID19 situation
 #' in the Dominican Republic and the world.
-#' @param savepng Logical. Should save a png version of the plot? Default FALSE.
+#' @param savepng Logical. Should save a png version of the plot?Default \code{FALSE}.
 
 #' @usage g_world(saveplot = FALSE, savepng = FALSE)
 #' @return The following scatter graphics are saved in png format on the computer

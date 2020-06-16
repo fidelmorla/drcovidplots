@@ -2,8 +2,8 @@
 #' @aliases g_positive
 #' @description This function graphs the percentage of positives with respect to the total number of tests.
 #' @usage g_positive(saveplot = FALSE, savepng = FALSE)
-#' @param saveplot Logical. Should save the ggplot objet to the \code{.GlobalEnv}? Default FALSE.
-#' @param savepng Logical. Should save a png version of the plot? Default FALSE.
+#' @param saveplot Logical. Should save the ggplot objet to the \code{.GlobalEnv}? Default \code{FALSE}.
+#' @param savepng Logical. Should save a png version of the plot? Default \code{FALSE}.
 
 #' @return Graph of the percentage of positives with respect to the total number of tests and saves a
 #' copy in png format to the computer at the address defined in \code{setwd()}.

@@ -3,8 +3,8 @@
 #' @description This function graphs the provinces with the most positive
 #'   cases of COVID19 in the DR.
 #' @usage g_cases_province(n_province = 15L, saveplot = FALSE, savepng = FALSE)
-#' @param saveplot Logical. Should save the ggplot objet to the \code{.GlobalEnv}? Default FALSE.
-#' @param savepng Logical. Should save a png version of the plot? Default FALSE.
+#' @param saveplot Logical. Should save the ggplot objet to the \code{.GlobalEnv}? Default \code{FALSE}.
+#' @param savepng Logical. Should save a png version of the plot? Default \code{FALSE}.
 #' @param n_province Integer. Number of provinces to show on plot. Range = [2,32].
 #'   Default \code{n_province = 15L}.
 #' @return Graph of the provinces with the most positive cases of COVID19 and saves a

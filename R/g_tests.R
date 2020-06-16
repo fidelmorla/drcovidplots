@@ -2,8 +2,8 @@
 #' @aliases g_tests
 #' @description This function graphs the COVID19 tests in RD.
 #' @usage g_tests(saveplot = FALSE, savepng = FALSE)
-#' @param saveplot Logical. Should save the ggplot objet to the \code{.GlobalEnv}? Default FALSE.
-#' @param savepng Logical. Should save a png version of the plot? Default FALSE.
+#' @param saveplot Logical. Should save the ggplot objet to the \code{.GlobalEnv}? Default \code{FALSE}.
+#' @param savepng Logical. Should save a png version of the plot? Default \code{FALSE}.
 #' @importFrom scales comma
 #' @return Graph of daily and accumulated tests both in units and per million inhabitants
 #' and save a copy in png format on the computer to the address defined in \code{setwd()}.
