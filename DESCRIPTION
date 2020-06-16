@@ -5,7 +5,7 @@ Version: 0.1.10
 Date: 2020-06-01
 Authors@R: c(person(given = "Fidel", family = "Morla, MA", role = c("aut", "cre"),
                      email = "fidel.morla@gmail.com"),
-             person(given = "Johan", family = "Rosa", role = c("rev"),
+             person(given = "Johan", family = "Rosa", role = c("ctb", "rev"),
                      email = "johan.rosaperez@gmail.com"))
 Description: This packages generates several plots using COVID-19 data from the Minister of Public Health and Social Assintance from Dominican Republic for COVID19.
 License: MIT + file LICENSE
