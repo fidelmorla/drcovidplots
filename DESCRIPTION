@@ -1,7 +1,7 @@
 Package: drcovidplots
 Type: Package
 Title: Plots for COVID19 data from Dominican Republic 
-Version: 0.1.10
+Version: 0.1.11
 Date: 2020-06-01
 Authors@R: c(person(given = "Fidel", family = "Morla", role = c("aut", "cre"),
                      email = "fidel.morla@gmail.com"),
