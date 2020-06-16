@@ -41,22 +41,33 @@ g_map_covid <- function(date = "latest", variable = "Cases", by_habitants = TRUE
 
   if (variable == "Cases") {
     scale_fill <- colorspace::scale_fill_continuous_sequential(
+      p1 = 0.1,
+      p2 = 0.4,
+      l1 = 40,
+      c1 = 100,
       palette = "Blues",
       labels = scales::comma,
       guide = ggplot2::guide_colorbar(barwidth = 15)
     )
   } else if (variable == "Deaths") {
     scale_fill <- colorspace::scale_fill_continuous_sequential(
+      p1 = 0.2,
+      p2 = 0.4,
+      l1 = 40,
+      c1 = 185,
       palette = "YlOrRd",
       labels = scales::comma,
       guide = ggplot2::guide_colorbar(barwidth = 15))
   } else if (variable == "Recovered") {
     scale_fill <- colorspace::scale_fill_continuous_sequential(
-      palette = "PuBuGn",
+      p1 = 0.1,
+      p2 = 0.4,
+      l1 = 40,
+      c1 = 150,
+      palette = "BuGn",
       labels = scales::comma,
       guide = ggplot2::guide_colorbar(barwidth = 15))
   }
-
 
 
   map_covid <- dplyr::left_join(drcovidplots::map_provincias, data, by = c("province_short" = "Province")) %>%
