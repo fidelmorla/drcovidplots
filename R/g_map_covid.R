@@ -3,7 +3,7 @@
 #' @description This function graphs the provinces with the most positive
 #'   cases of COVID19 in the DR.
 #' @usage g_map_covid(date = "latest", interactive = FALSE, variable = "Cases")
-#' @param date
+#' @param date Character.
 #' @param interactive
 #' @param variable
 #' @param saveplot Logical. Should save the ggplot objet to the \code{.GlobalEnv}? Default FALSE.
@@ -17,9 +17,10 @@
 #' g_map_covid()
 #' g_map_covid(savepng = TRUE)
 #' g_map_covid(date = "latest", variable = "Deaths")
+#' g_map_covid(date = "2020-04-05", variable = "Recovered")
 #' @name g_map_covid
 
-g_map_covid <- function(date = "latest", interactive = FALSE, variable = "Cases") {
+g_map_covid <- function(date = "latest", variable = "Cases", by_habitants = TRUE) {
 
   if (exists('data_cum') == FALSE) {
     stop("data objects are missing, run load_data_covid_dr()")
@@ -37,24 +38,26 @@ g_map_covid <- function(date = "latest", interactive = FALSE, variable = "Cases"
       dplyr::filter(date == date2)
   }
 
+
   if (variable == "Cases") {
-    scale_fill <- ggplot2::scale_fill_continuous(
+    scale_fill <- colorspace::scale_fill_continuous_sequential(
+      palette = "Blues",
       labels = scales::comma,
       guide = ggplot2::guide_colorbar(barwidth = 15)
     )
   } else if (variable == "Deaths") {
-    scale_fill <- ggplot2::scale_fill_viridis_c(
-      option = "inferno",
+    scale_fill <- colorspace::scale_fill_continuous_sequential(
+      palette = "YlOrRd",
       labels = scales::comma,
       guide = ggplot2::guide_colorbar(barwidth = 15))
   } else if (variable == "Recovered") {
-    scale_fill <- ggplot2::scale_fill_viridis_c(
+    scale_fill <- colorspace::scale_fill_continuous_sequential(
+      palette = "PuBuGn",
       labels = scales::comma,
-      direction = -1,
       guide = ggplot2::guide_colorbar(barwidth = 15))
   }
 
-  if(interactive == FALSE) {
+
 
   map_covid <- dplyr::left_join(drcovidplots::map_provincias, data, by = c("province_short" = "Province")) %>%
     select(var_toplot = variable, dplyr::everything()) %>%
@@ -76,7 +79,7 @@ g_map_covid <- function(date = "latest", interactive = FALSE, variable = "Cases"
     ggrepel::geom_label_repel(ggplot2::aes(COORDS_X, COORDS_Y, label = label_short),
                               size = 3, min.segment.length = 0, point.padding = NA) +
     scale_fill
-  }
+
 
   return(map_covid)
 }
