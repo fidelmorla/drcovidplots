@@ -4,10 +4,10 @@
 #'   cases of COVID19 in the DR.
 #' @usage g_map_covid(date = "latest", interactive = FALSE, variable = "Cases")
 #' @param date Character.
-#' @param interactive
-#' @param variable
-#' @param saveplot Logical. Should save the ggplot objet to the \code{.GlobalEnv}? Default FALSE.
-#' @param savepng Logical. Should save a png version of the plot? Default FALSE.
+#' @param variable Character. One of the following \code{c("Cases", "Deaths", "Recovered")}
+#' @param by_habitants Logical. Should take account the province population? Default \code{TRUE}.
+#' @param saveplot Logical. Should save the ggplot objet to the \code{.GlobalEnv}? Default \code{FALSE}.
+#' @param savepng Logical. Should save a png version of the plot? Default \code{FALSE}.
 #'
 #' @return Graph the Dominican map with COVID-19 cases by province and saves a
 #' copy in png format to the computer at the address defined in \code{setwd()}.
@@ -20,7 +20,11 @@
 #' g_map_covid(date = "2020-04-05", variable = "Recovered")
 #' @name g_map_covid
 
-g_map_covid <- function(date = "latest", variable = "Cases", by_habitants = TRUE) {
+g_map_covid <- function(date = "latest",
+                        variable = "Cases",
+                        by_habitants = TRUE,
+                        saveplot = FALSE,
+                        savepng = FALSE) {
 
   if (exists('data_cum') == FALSE) {
     stop("data objects are missing, run load_data_covid_dr()")
@@ -93,6 +97,20 @@ g_map_covid <- function(date = "latest", variable = "Cases", by_habitants = TRUE
 
 
   return(map_covid)
+
+  if (saveplot == TRUE){
+    assign('map_covid', map_covid, envir = .GlobalEnv)
+  }
+
+  if (savepng == TRUE){
+
+    ggsave(filename = paste0("map_covid_", variable, ".png"),
+           plot = map_covid,
+           device = "png",
+           width = 18.333333333333332 / 1.5,
+           height = 10.466666666666667 / 1.5,
+           units = "in")
+  }
 }
 
 
