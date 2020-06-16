@@ -96,7 +96,7 @@ g_map_covid <- function(date = "latest",
     scale_fill
 
 
-  return(map_covid)
+  print(map_covid)
 
   if (saveplot == TRUE){
     assign('map_covid', map_covid, envir = .GlobalEnv)
