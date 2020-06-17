@@ -7,9 +7,9 @@
 g_l2(saveplot = FALSE, savepng = FALSE)
 }
 \arguments{
-\item{saveplot}{Logical. Should save the ggplot objet to the \code{.GlobalEnv}? Default FALSE.}
+\item{saveplot}{Logical. Should save the ggplot objet to the \code{.GlobalEnv}? Default \code{FALSE}.}
 
-\item{savepng}{Logical. Should save a png version of the plot? Default FALSE.}
+\item{savepng}{Logical. Should save a png version of the plot? Default \code{FALSE}.}
 }
 \value{
 Graphic of L2 of COVID19 and save a

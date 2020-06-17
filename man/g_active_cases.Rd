@@ -7,9 +7,9 @@
 g_active_cases(saveplot = FALSE, savepng = FALSE)
 }
 \arguments{
-\item{saveplot}{Logical. Should save the ggplot objet to the \code{.GlobalEnv}? Default FALSE.}
+\item{saveplot}{Logical. Should save the ggplot objet to the \code{.GlobalEnv}? Default \code{FALSE}.}
 
-\item{savepng}{Logical. Should save a png version of the plot? Default FALSE.}
+\item{savepng}{Logical. Should save a png version of the plot? Default \code{FALSE}.}
 }
 \value{
 Chart of COVID19 active cases and save a copy in png format on the computer

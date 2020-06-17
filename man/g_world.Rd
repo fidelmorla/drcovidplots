@@ -7,7 +7,7 @@
 g_world(saveplot = FALSE, savepng = FALSE)
 }
 \arguments{
-\item{savepng}{Logical. Should save a png version of the plot? Default FALSE.}
+\item{savepng}{Logical. Should save a png version of the plot?Default \code{FALSE}.}
 }
 \value{
 The following scatter graphics are saved in png format on the computer

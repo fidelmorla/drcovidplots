@@ -7,9 +7,15 @@
 g_map_covid(date = "latest", interactive = FALSE, variable = "Cases")
 }
 \arguments{
-\item{saveplot}{Logical. Should save the ggplot objet to the \code{.GlobalEnv}? Default FALSE.}
+\item{date}{Character.}
 
-\item{savepng}{Logical. Should save a png version of the plot? Default FALSE.}
+\item{variable}{Character. One of the following \code{c("Cases", "Deaths", "Recovered")}}
+
+\item{by_habitants}{Logical. Should take account the province population? Default \code{TRUE}.}
+
+\item{saveplot}{Logical. Should save the ggplot objet to the \code{.GlobalEnv}? Default \code{FALSE}.}
+
+\item{savepng}{Logical. Should save a png version of the plot? Default \code{FALSE}.}
 }
 \value{
 Graph the Dominican map with COVID-19 cases by province and saves a
@@ -23,4 +29,5 @@ This function graphs the provinces with the most positive
 g_map_covid()
 g_map_covid(savepng = TRUE)
 g_map_covid(date = "latest", variable = "Deaths")
+g_map_covid(date = "2020-04-05", variable = "Recovered")
 }

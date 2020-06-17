@@ -7,9 +7,9 @@
 g_log_nc(saveplot = FALSE, savepng = FALSE)
 }
 \arguments{
-\item{saveplot}{Logical. Should save the ggplot objet to the \code{.GlobalEnv}? Default FALSE.}
+\item{saveplot}{Logical. Should save the ggplot objet to the \code{.GlobalEnv}? Default \code{FALSE}.}
 
-\item{savepng}{Logical. Should save a png version of the plot? Default FALSE.}
+\item{savepng}{Logical. Should save a png version of the plot? Default \code{FALSE}.}
 }
 \value{
 Graph of the logarithm of of both new cases and total cases and save a

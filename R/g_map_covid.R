@@ -74,7 +74,7 @@ g_map_covid <- function(date = "latest",
   }
 
 
-  map_covid <- dplyr::left_join(drcovidplots::map_provincias, data, by = c("province_short" = "Province")) %>%
+  map_covid <- dplyr::left_join(drcovidplots::map_province, data, by = c("province_short" = "Province")) %>%
     select(var_toplot = variable, dplyr::everything()) %>%
     mutate(
       CENTROID = purrr::map(geometry, sf::st_centroid),
