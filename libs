@@ -3,6 +3,6 @@ packages("gganimate", "magrittr", "tidyverse", "lemon",
          "ggalt", "ggthemes", "zoo", "gridExtra", "viridis",
          "lubridate", "gifski", "png", "scales", "colorspace",
          "grid", "ggrepel", 'ggsci', 'plotly', 'XML', 'rvest', 'xml2',
-         "forcats", 'gifski',
+         "forcats", 'gifski', 'sf',
          'grDevices', 'devtools', 'roxygen2', 'httr',
          prompt = FALSE)
