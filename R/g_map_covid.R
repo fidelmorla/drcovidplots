@@ -5,7 +5,7 @@
 #' @usage g_map_covid(date = "latest", interactive = FALSE, variable = "Cases")
 #' @param date Character indecating the date to plot in \code{"yyyy-mm-dd"} format. Default \code{"latest"}
 #' @param variable Character. One of the following \code{c("Cases", "Deaths", "Recovered")}
-#' @param by_habitants Logical. Should take account the province population? Default \code{TRUE}.
+#' @param by_inhabitants Logical. Should take account the province population? Default \code{TRUE}.
 #' @param saveplot Logical. Should save the ggplot objet to the \code{.GlobalEnv}? Default \code{FALSE}.
 #' @param savepng Logical. Should save a png version of the plot? Default \code{FALSE}.
 #'
@@ -22,7 +22,7 @@
 
 g_map_covid <- function(date = "latest",
                         variable = "Cases",
-                        by_habitants = TRUE,
+                        by_inhabitants = FALSE,
                         saveplot = FALSE,
                         savepng = FALSE) {
 
@@ -73,7 +73,7 @@ g_map_covid <- function(date = "latest",
       guide = ggplot2::guide_colorbar(barwidth = 12))
   }
 
-  if(by_habitants) {
+  if(by_inhabitants) {
 
     map_covid <- drcovidplots::map_province %>%
       dplyr::left_join(data_density, by = c("province_short" = "Province")) %>%
