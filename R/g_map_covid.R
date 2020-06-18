@@ -3,7 +3,7 @@
 #' @description This function graphs the provinces with the most positive
 #'   cases of COVID19 in the DR.
 #' @usage g_map_covid(date = "latest", interactive = FALSE, variable = "Cases")
-#' @param date Character.
+#' @param date Character indecating the date to plot in \code{"yyyy-mm-dd"} format. Default \code{"latest"}
 #' @param variable Character. One of the following \code{c("Cases", "Deaths", "Recovered")}
 #' @param by_habitants Logical. Should take account the province population? Default \code{TRUE}.
 #' @param saveplot Logical. Should save the ggplot objet to the \code{.GlobalEnv}? Default \code{FALSE}.
@@ -51,7 +51,7 @@ g_map_covid <- function(date = "latest",
       c1 = 100,
       palette = "Blues",
       labels = scales::comma,
-      guide = ggplot2::guide_colorbar(barwidth = 15)
+      guide = ggplot2::guide_colorbar(barwidth = 12)
     )
   } else if (variable == "Deaths") {
     scale_fill <- colorspace::scale_fill_continuous_sequential(
@@ -61,7 +61,7 @@ g_map_covid <- function(date = "latest",
       c1 = 185,
       palette = "YlOrRd",
       labels = scales::comma,
-      guide = ggplot2::guide_colorbar(barwidth = 15))
+      guide = ggplot2::guide_colorbar(barwidth = 12))
   } else if (variable == "Recovered") {
     scale_fill <- colorspace::scale_fill_continuous_sequential(
       p1 = 0.1,
@@ -70,32 +70,60 @@ g_map_covid <- function(date = "latest",
       c1 = 150,
       palette = "BuGn",
       labels = scales::comma,
-      guide = ggplot2::guide_colorbar(barwidth = 15))
+      guide = ggplot2::guide_colorbar(barwidth = 12))
   }
 
+  if(by_habitants) {
 
-  map_covid <- dplyr::left_join(drcovidplots::map_province,
-                                data,
-                                by = c("province_short" = "Province")) %>%
-    select(var_toplot = variable, dplyr::everything()) %>%
-    mutate(
-      CENTROID = purrr::map(geometry, sf::st_centroid),
-      COORDS = purrr::map(CENTROID, sf::st_coordinates),
-      COORDS_X = purrr::map_dbl(COORDS, 1),
-      COORDS_Y = purrr::map_dbl(COORDS, 2),
-      label_short = paste0(province_short, ": ", format(var_toplot, big.mark = ","))
-    ) %>%
-    ggplot2::ggplot() +
-    ggplot2::geom_sf(ggplot2::aes(fill = var_toplot)) +
-    ggplot2::theme_void() +
-    ggplot2::theme(
-      legend.position = c(0.5, 0.2),
-      legend.direction = "horizontal"
-    ) +
-    ggplot2::labs(fill = variable) +
-    ggrepel::geom_label_repel(ggplot2::aes(COORDS_X, COORDS_Y, label = label_short),
-                              size = 3, min.segment.length = 0, point.padding = NA) +
-    scale_fill
+    map_covid <- drcovidplots::map_province %>%
+      dplyr::left_join(data_density, by = c("province_short" = "Province")) %>%
+      left_join(data_province %>% filter(date == max(date)),
+                by = c("province_short" = "Province")) %>%
+      select(province_short, province_name, var_toplot = variable, Pop, geometry) %>%
+      mutate(
+        var_toplot = var_toplot / (Pop / 100000),
+        CENTROID = purrr::map(geometry, sf::st_centroid),
+        COORDS = purrr::map(CENTROID, sf::st_coordinates),
+        COORDS_X = purrr::map_dbl(COORDS, 1),
+        COORDS_Y = purrr::map_dbl(COORDS, 2),
+        label_short = paste0(province_short, ": ", format(var_toplot, big.mark = ",", digits = 2))
+      ) %>%  ggplot2::ggplot() +
+      ggplot2::geom_sf(ggplot2::aes(fill = var_toplot)) +
+      ggplot2::theme_void() +
+      ggplot2::theme(
+        legend.position = c(0.5, 0.2),
+        legend.direction = "horizontal"
+      ) +
+      ggplot2::labs(fill = variable) +
+      ggrepel::geom_label_repel(ggplot2::aes(COORDS_X, COORDS_Y, label = label_short),
+                                size = 3, min.segment.length = 0, point.padding = NA) +
+      scale_fill
+
+  } else {
+    map_covid <- dplyr::left_join(drcovidplots::map_province,
+                                  data,
+                                  by = c("province_short" = "Province")) %>%
+      select(var_toplot = variable, dplyr::everything()) %>%
+      mutate(
+        CENTROID = purrr::map(geometry, sf::st_centroid),
+        COORDS = purrr::map(CENTROID, sf::st_coordinates),
+        COORDS_X = purrr::map_dbl(COORDS, 1),
+        COORDS_Y = purrr::map_dbl(COORDS, 2),
+        label_short = paste0(province_short, ": ", format(var_toplot, big.mark = ",", digits = 2))
+      ) %>%
+      ggplot2::ggplot() +
+      ggplot2::geom_sf(ggplot2::aes(fill = var_toplot)) +
+      ggplot2::theme_void() +
+      ggplot2::theme(
+        legend.position = c(0.5, 0.2),
+        legend.direction = "horizontal"
+      ) +
+      ggplot2::labs(fill = variable) +
+      ggrepel::geom_label_repel(ggplot2::aes(COORDS_X, COORDS_Y, label = label_short),
+                                size = 3, min.segment.length = 0, point.padding = NA) +
+      scale_fill
+  }
+
 
 
   print(map_covid)
