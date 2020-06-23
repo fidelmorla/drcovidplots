@@ -78,6 +78,12 @@ g_map_covid <- function(date = "latest",
     format(sum(data[[variable]], na.rm = TRUE), big.mark = ",")
   }
 
+  format_ratio <- function(variable) {
+    ratio = sum(data[[variable]]) / 104.485
+    ratio = round(ratio)
+    return(ratio)
+  }
+
   if(variable == "Cases" ) {
     title = "DR: Cases of COVID19 by province"
     subtitle = paste0("Total = ", format_variable(variable))
@@ -115,7 +121,15 @@ g_map_covid <- function(date = "latest",
       ggrepel::geom_label_repel(ggplot2::aes(COORDS_X, COORDS_Y, label = label_short),
                                 size = 3, min.segment.length = 0, point.padding = NA) +
       labs(title = title,
-           subtitle = paste0(Variables, " by 100,000 inhabitants = ", ""))
+           subtitle = paste0(
+             variable,
+             " by 100,000 inhabitants = ",
+             format_ratio(variable)),
+           caption = paste0(
+             "Source: @johanRosa_ with the special bulletin #",
+             rep_actual,
+             " of @SaludPublicaRD, surface and population reports  of @ONERD_")
+           ) +
       scale_fill
 
   } else {
