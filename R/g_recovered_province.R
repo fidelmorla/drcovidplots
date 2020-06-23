@@ -49,7 +49,7 @@ total_tr <- round(100 * total_rec/sum(df_rec_prov$Cases),
 
 
 lab_rec_prov <-
-  labs(title = "DR: Recovered de COVID-19 por province",
+  labs(title = "DR: Recovered from COVID19 by province",
        subtitle  =  paste0("Total = ",
                            comma(total_rec),
                            " (Recovery rate = ",

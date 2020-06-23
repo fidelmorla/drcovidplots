@@ -63,7 +63,7 @@ max_inc <-  df_inc$Incidence %>% max(na.rm = TRUE) %>%
 rep_actual <- data_cum$Reports %>% max()
 
 lab_inc <-
-  labs(title = "DR: Incidence of COVID-19",
+  labs(title = "DR: COVID19 incidence",
        subtitle  =  paste0('Positive cases per 100,000 inhabitants'),
        caption  = paste0("Source: @fidelmorla with information from special bulletin #",
                          rep_actual,

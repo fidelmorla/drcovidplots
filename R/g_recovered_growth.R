@@ -30,7 +30,7 @@ df_rec_growth <-
   filter(date >= max(date) - 15)
 
 lab_rec_growth <-
-  labs(title = "DR: Recovered growth from COVID-19",
+  labs(title = "DR: Recovered from COVID19 growth rate",
        caption  = "Source: @fidelmorla with the special bulletins of @SaludPublicaRD",
        x = "",
        y = ""
