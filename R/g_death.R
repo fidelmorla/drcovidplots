@@ -47,7 +47,7 @@ rep_actual <- data_cum$Reports %>% max(na.rm = TRUE)
                        digits = 2)
 
     lab_prov_dths <-
-      labs(title = "DR: Deaths by COVID-19",
+      labs(title = "DR: Deaths from COVID-19",
            subtitle  =  paste0("Total = ",
                                total_dths,
                                " (Let = ",
