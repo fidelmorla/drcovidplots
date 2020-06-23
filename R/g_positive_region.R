@@ -60,7 +60,7 @@ g_positive_region <- function(saveplot = FALSE,
   total_pos <- round(100 * sum(df_pos_prov$Cases)/sum(df_pos_prov$Tests),
                      digits = 2)
   lab_pos_reg <-
-    labs(title = "DR: Positive ratio from COVID-19 by region",
+    labs(title = "DR: Positive ratio COVID-19 by region",
          subtitle  =  paste0("Country's positive ratio = ",
                              total_pos,
                              "%"),

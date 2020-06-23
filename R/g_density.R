@@ -51,7 +51,7 @@ lab_den <-
                            cor_den[2]),
        caption  = paste0("Source: @fidelmorla with the special bulletin #",
                          rep_actual,
-                         "of @SaludPublicaRD and reports of surface and population of @ONERD_"),
+                         "of @SaludPublicaRD and surface and population reports of @ONERD_"),
        x = "",
        y = expression ("Density = Population / Area in"~m^2)
   )
