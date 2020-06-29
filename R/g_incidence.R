@@ -83,7 +83,7 @@ g_inc <-
             aes(size = 24,
                 label = sprintf("%.1f",round(Incidence,1))),
             hjust = -0.5) +
-  annotate_text(x = 1,
+  annotate_textp(x = 1,
                  y = .5,
                  size = 12,
                  color = "darkred",
