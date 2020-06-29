@@ -73,6 +73,29 @@ g_map_covid <- function(date = "latest",
       guide = ggplot2::guide_colorbar(barwidth = 12))
   }
 
+
+  format_variable <- function(variable) {
+    format(sum(data[[variable]], na.rm = TRUE), big.mark = ",")
+  }
+
+  format_ratio <- function(variable) {
+    ratio = sum(data[[variable]]) / 104.485
+    ratio = round(ratio)
+    return(ratio)
+  }
+
+  if(variable == "Cases" ) {
+    title = "DR: Cases of COVID19 by province"
+    subtitle = paste0("Total = ", format_variable(variable))
+  } else if (variable == "Recovered") {
+    title = "DR: Recovered from COVID19 by province"
+    subtitle = paste0("Total = ", format_variable(variable))
+  } else if (variable == "Deaths") {
+    title = "DR: Deaths by COVID19 by province"
+    subtitle = paste0("Total = ", format_variable(variable))
+  }
+
+
   if(by_inhabitants) {
 
     map_covid <- drcovidplots::map_province %>%
@@ -97,6 +120,16 @@ g_map_covid <- function(date = "latest",
       ggplot2::labs(fill = variable) +
       ggrepel::geom_label_repel(ggplot2::aes(COORDS_X, COORDS_Y, label = label_short),
                                 size = 3, min.segment.length = 0, point.padding = NA) +
+      labs(title = title,
+           subtitle = paste0(
+             variable,
+             " by 100,000 inhabitants = ",
+             format_ratio(variable)),
+           caption = paste0(
+             "Source: @johanRosa_ with the special bulletin #",
+             rep_actual,
+             " of @SaludPublicaRD, surface and population reports  of @ONERD_")
+           ) +
       scale_fill
 
   } else {
@@ -121,6 +154,14 @@ g_map_covid <- function(date = "latest",
       ggplot2::labs(fill = variable) +
       ggrepel::geom_label_repel(ggplot2::aes(COORDS_X, COORDS_Y, label = label_short),
                                 size = 3, min.segment.length = 0, point.padding = NA) +
+      labs(
+        title = title,
+        subtitle = subtitle,
+        caption = paste0(
+          "Source: @johanRosa_ with the special bulletin #",
+          rep_actual,
+          " of @SaludPublicaRD and surface reports of @ONERD_")
+      ) +
       scale_fill
   }
 
@@ -142,8 +183,4 @@ g_map_covid <- function(date = "latest",
            units = "in")
   }
 }
-
-
-
-
 
