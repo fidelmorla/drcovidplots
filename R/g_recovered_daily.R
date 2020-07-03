@@ -64,7 +64,7 @@ g_rec_d <-
   lab_rec_d +
   drcovidplots::list_themes['t_darkgreen']
 
-print(g_rec_d)
+print(g_rec_d) %>% suppressWarnings()
 
 if (saveplot == TRUE) {
 assign('g_rec_d', g_rec_d, envir = .GlobalEnv)

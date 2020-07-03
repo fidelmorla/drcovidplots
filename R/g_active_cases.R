@@ -72,7 +72,7 @@ g_active_cases <- function(saveplot = FALSE,
     lab_ac +
     drcovidplots::list_themes['t6']
 
-  print(g_ac)
+  print(g_ac) %>% suppressWarnings()
 
   if (saveplot == TRUE) {assign('g_ac', g_ac, envir = .GlobalEnv)}
 

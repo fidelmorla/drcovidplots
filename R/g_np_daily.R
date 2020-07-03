@@ -97,7 +97,7 @@ g_np_daily <-
   lab_np_daily +
   drcovidplots::list_themes['t_legend']
 
-print(g_np_daily)
+print(g_np_daily) %>% suppressWarnings()
 
 if (saveplot == TRUE) {assign('g_np_daily', g_np_daily, envir = .GlobalEnv)}
 

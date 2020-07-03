@@ -72,7 +72,7 @@ g_status <- function(saveplot = FALSE,
       theme(axis.text.x = element_text(angle = 0),
             axis.text.y = element_text(color = rev(col_type)))
 
-    print(g_type)
+    print(g_type) %>% suppressWarnings()
 
     if (saveplot == TRUE) {assign("g_type", g_type, envir = .GlobalEnv)}
 

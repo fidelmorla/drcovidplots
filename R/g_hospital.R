@@ -73,7 +73,7 @@ g_h <-
   lab_h +
   drcovidplots::list_themes['t_darkorange']
 
-print(g_h)
+print(g_h) %>% suppressWarnings()
 
 if (saveplot == TRUE) {assign('g_h', g_h, envir = .GlobalEnv)}
 

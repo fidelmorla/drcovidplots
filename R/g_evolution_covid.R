@@ -82,7 +82,7 @@ g_evolution_covid <- function(saveplot = FALSE,
             height = 628/1.5,
             end_pause = 35)
 
-    print(g_cov)
+    print(g_cov) %>% suppressWarnings()
 
     if (saveplot == TRUE) {
       assign('g_cov', g_cov, envir = .GlobalEnv)

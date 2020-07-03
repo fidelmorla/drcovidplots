@@ -99,7 +99,7 @@ g_inc <-
   theme(axis.text.x = element_text(angle = 0),
         axis.text.y = element_text(color = rev(heatcol_inc)))
 
-print(g_inc)
+print(g_inc) %>% suppressWarnings()
 
 if (saveplot == TRUE) {assign('g_inc', g_inc, envir = .GlobalEnv)}
 

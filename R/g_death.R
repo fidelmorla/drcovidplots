@@ -107,7 +107,7 @@ rep_actual <- data_cum$Reports %>% max(na.rm = TRUE)
       theme(axis.text.x = element_text(angle = 0),
             axis.text.y = element_text(color = rev(heatcol_dths)))
 
-    print(g_dths)
+    print(g_dths) %>% suppressWarnings()
 
     if (saveplot == TRUE){
     assign('g_deaths', g_dths, envir = .GlobalEnv)

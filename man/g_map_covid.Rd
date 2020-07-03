@@ -7,11 +7,11 @@
 g_map_covid(date = "latest", interactive = FALSE, variable = "Cases")
 }
 \arguments{
-\item{date}{Character.}
+\item{date}{Character indecating the date to plot in \code{"yyyy-mm-dd"} format. Default \code{"latest"}}
 
 \item{variable}{Character. One of the following \code{c("Cases", "Deaths", "Recovered")}}
 
-\item{by_habitants}{Logical. Should take account the province population? Default \code{TRUE}.}
+\item{by_inhabitants}{Logical. Should take account the province population? Default \code{TRUE}.}
 
 \item{saveplot}{Logical. Should save the ggplot objet to the \code{.GlobalEnv}? Default \code{FALSE}.}
 

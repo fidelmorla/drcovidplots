@@ -117,7 +117,7 @@ g_inclet_reg <-
                                         linetype = "solid")
   )
 
-print(g_inclet_reg)
+print(g_inclet_reg) %>% suppressWarnings()
 
 if (saveplot == TRUE) {assign('g_inclet_reg', g_inclet_reg, envir = .GlobalEnv)}
 

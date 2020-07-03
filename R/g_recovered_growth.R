@@ -63,6 +63,8 @@ g_rec_growth <-
   lab_rec_growth +
   drcovidplots::list_themes['t_darkgreen']
 
+print(g_rec_growth) %>% suppressWarnings()
+
 if (saveplot == TRUE) {assign('g_rec_growth', g_rec_growth, envir = .GlobalEnv)}
 
 if (savepng == TRUE){

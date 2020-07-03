@@ -69,7 +69,7 @@ g_dailygrowth <-
                date_breaks = "3 days") +
   drcovidplots::list_themes['t6']
 
-print(g_dailygrowth)
+print(g_dailygrowth) %>% suppressWarnings()
 
 if (saveplot == TRUE){
 assign('g_dailygrowth', g_dailygrowth, envir = .GlobalEnv)

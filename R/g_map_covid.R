@@ -166,8 +166,7 @@ g_map_covid <- function(date = "latest",
   }
 
 
-
-  print(map_covid)
+  print(map_covid) %>% suppressWarnings()
 
   if (saveplot == TRUE){
     assign('map_covid', map_covid, envir = .GlobalEnv)

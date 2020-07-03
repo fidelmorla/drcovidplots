@@ -88,7 +88,7 @@ g_positive_province <- function(saveplot = FALSE,
           axis.title.x = element_text(angle = 0),
           axis.text.y = element_text(color = rev(heatcol_pos)))
 
-  print(g_pos_prov)
+  print(g_pos_prov) %>% suppressWarnings()
 
   if (saveplot == TRUE){
     assign('g_pos_prov', g_pos_prov, envir = .GlobalEnv)

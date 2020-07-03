@@ -108,7 +108,7 @@ g_rec_prov <-
   theme(axis.text.x = element_text(angle = 0),
         axis.text.y = element_text(color = rev(heatcol_rec)))
 
-print(g_rec_prov)
+print(g_rec_prov) %>% suppressWarnings()
 
 if (saveplot == TRUE){
 assign('g_rec_prov', g_rec_prov, envir = .GlobalEnv)

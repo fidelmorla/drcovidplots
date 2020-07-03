@@ -57,7 +57,7 @@ g_log_nc <- function(saveplot = FALSE,
                label = "We are winning \n when this number GOES DOWN!") +
       drcovidplots::list_themes['t6']
 
-    print(g_nc)
+    print(g_nc) %>% suppressWarnings()
 
     if (saveplot == TRUE) {assign('g_nc', g_nc, envir = .GlobalEnv)}
 

@@ -67,7 +67,7 @@ g_per_pos <-
                date_breaks = "1 day") +
   drcovidplots::list_themes['t_darkred']
 
-print(g_per_pos)
+print(g_per_pos) %>% suppressWarnings()
 
 if (saveplot == TRUE) {assign('g_per_pos', g_per_pos, envir = .GlobalEnv)}
 

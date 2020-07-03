@@ -94,7 +94,7 @@ g_pos_reg <-
   theme(axis.text.x = element_text(angle = 0),
         axis.text.y = element_text(color = rev(heatcol_pos_reg)))
 
-  print(g_pos_reg)
+  print(g_pos_reg) %>% suppressWarnings()
 
   if (saveplot == TRUE){
     assign('g_pos_reg', g_pos_reg, envir = .GlobalEnv)

@@ -108,7 +108,7 @@ g_cases_prov <-
   theme(axis.text.x = element_text(angle = 0),
         axis.text.y = element_text(color = rev(heatcol_s)))
 
-print(g_cases_prov)
+print(g_cases_prov) %>% suppressWarnings()
 
 if (saveplot == TRUE) {
 assign('g_cases_prov', g_cases_prov, envir = .GlobalEnv)

@@ -65,7 +65,7 @@ g_l2 <-
   drcovidplots::list_themes['t6'] +
   lab_l2
 
-print(g_l2)
+print(g_l2) %>% suppressWarnings()
 
 if(saveplot == TRUE) {assign('g_let2', g_l2, envir = .GlobalEnv)}
 
