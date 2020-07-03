@@ -81,7 +81,8 @@ lab_inclet_reg <-
   )
 
 
-g_inclet_reg <-
+suppressWarnings(
+  g_inclet_reg <-
   df_inc %>%
   filter(!is.na(Reg)) %>%
   ggplot(aes(x = Let,
@@ -116,7 +117,7 @@ g_inclet_reg <-
                                         size = 0.1,
                                         linetype = "solid")
   )
-
+)
 print(g_inclet_reg) %>% suppressWarnings()
 
 if (saveplot == TRUE) {assign('g_inclet_reg', g_inclet_reg, envir = .GlobalEnv)}

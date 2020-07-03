@@ -63,7 +63,7 @@ g_positive_province <- function(saveplot = FALSE,
                                 c = 225,
                                 c1 = 150)
 
-  g_pos_prov <-
+  suppressWarnings(g_pos_prov <-
     df_pos_prov %>%
     ggplot(aes(x = reorder(Province, rank, order = TRUE),
                y = Pos,
@@ -87,6 +87,7 @@ g_positive_province <- function(saveplot = FALSE,
     theme(axis.text.x = element_text(angle = 0),
           axis.title.x = element_text(angle = 0),
           axis.text.y = element_text(color = rev(heatcol_pos)))
+)
 
   print(g_pos_prov) %>% suppressWarnings()
 

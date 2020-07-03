@@ -85,6 +85,7 @@ lab_prov_s <-
        y = "Positive"
   )
 
+suppressWarnings(
 g_cases_prov <-
   df_prov_s %>%
   ggplot(aes(x = reorder(Province, -rank, order = TRUE),
@@ -107,6 +108,8 @@ g_cases_prov <-
   drcovidplots::list_themes['t6'] +
   theme(axis.text.x = element_text(angle = 0),
         axis.text.y = element_text(color = rev(heatcol_s)))
+
+)
 
 print(g_cases_prov) %>% suppressWarnings()
 

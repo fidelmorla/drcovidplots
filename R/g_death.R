@@ -74,6 +74,7 @@ rep_actual <- data_cum$Reports %>% max(na.rm = TRUE)
                                   c1 = 150
     )
 
+    suppressWarnings(
     g_dths <-
       df_dths %>%
       filter(Deaths > 0) %>%
@@ -106,7 +107,7 @@ rep_actual <- data_cum$Reports %>% max(na.rm = TRUE)
       drcovidplots::list_themes['t6'] +
       theme(axis.text.x = element_text(angle = 0),
             axis.text.y = element_text(color = rev(heatcol_dths)))
-
+)
     print(g_dths) %>% suppressWarnings()
 
     if (saveplot == TRUE){

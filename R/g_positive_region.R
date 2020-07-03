@@ -71,7 +71,7 @@ g_positive_region <- function(saveplot = FALSE,
          y = "%"
     )
 
-
+  suppressWarnings(
 g_pos_reg <-
   df_pos_reg %>%
   ggplot(aes(x = reorder(Reg, rank),
@@ -93,6 +93,7 @@ g_pos_reg <-
   drcovidplots::list_themes['t6'] +
   theme(axis.text.x = element_text(angle = 0),
         axis.text.y = element_text(color = rev(heatcol_pos_reg)))
+)
 
   print(g_pos_reg) %>% suppressWarnings()
 

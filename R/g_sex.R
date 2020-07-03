@@ -58,7 +58,8 @@ lab_sex <-
 col_sex <- c('#149ac7', #Hom
              '#b53c8d') #Muj
 
-g_positives_by_sex <-
+suppressWarnings(
+  g_positives_by_sex <-
   df_sex %>%
   ggplot(aes(x = reorder(Sex, Positive, order = TRUE),
              y = Positive,
@@ -85,6 +86,7 @@ g_positives_by_sex <-
   drcovidplots::list_themes['t6'] +
   theme(axis.text.x = element_text(angle = 0),
         axis.text.y = element_text(color = rev(col_sex)))
+  )
 
 print(g_positives_by_sex) %>% suppressWarnings()
 

@@ -68,6 +68,7 @@ col_reg <- c('#bf0000', #azul
              '#e3981e', #morado
              'darkgrey')
 
+suppressWarnings(
 g_reg <-
   df_reg %>%
   filter(date ==  max(date)) %>%
@@ -95,6 +96,7 @@ g_reg <-
   drcovidplots::list_themes['t6'] +
   theme(axis.text.x = element_text(angle = 0),
         axis.text.y = element_text(color = rev(col_reg)))
+)
 
 print(g_reg) %>% suppressWarnings()
 

@@ -49,7 +49,8 @@ g_status <- function(saveplot = FALSE,
                          'Hospital', #naranja,
                          'Deaths') #rojo
 
-    g_type <-
+    suppressWarnings(
+      g_type <-
       df_type %>%
       ggplot(aes(x = reorder(Type, N_p),
                  y = N_p,
@@ -71,6 +72,7 @@ g_status <- function(saveplot = FALSE,
       drcovidplots::list_themes['t6'] +
       theme(axis.text.x = element_text(angle = 0),
             axis.text.y = element_text(color = rev(col_type)))
+      )
 
     print(g_type) %>% suppressWarnings()
 
